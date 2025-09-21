@@ -1,0 +1,33 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="eggGradient" cx="0.3" cy="0.3" r="0.8">
+      <stop offset="0%" style="stop-color:#FFF8DC;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#F5F5DC;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E6E6FA;stop-opacity:1" />
+    </radialGradient>
+    <radialGradient id="yolkGradient" cx="0.4" cy="0.4" r="0.6">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#FFA500;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF8C00;stop-opacity:1" />
+    </radialGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="#00000020"/>
+    </filter>
+  </defs>
+  
+  <!-- 卵の白身 -->
+  <ellipse cx="200" cy="180" rx="120" ry="90" fill="url(#eggGradient)" filter="url(#shadow)" stroke="#E0E0E0" stroke-width="2"/>
+  
+  <!-- 卵の黄身 -->
+  <circle cx="200" cy="180" r="45" fill="url(#yolkGradient)" stroke="#FF8C00" stroke-width="1"/>
+  
+  <!-- ハイライト効果 -->
+  <ellipse cx="180" cy="160" rx="15" ry="10" fill="#FFFFFF" opacity="0.6"/>
+  <ellipse cx="190" cy="170" rx="8" ry="6" fill="#FFFFFF" opacity="0.4"/>
+  
+  <!-- 装飾的な要素 -->
+  <circle cx="100" cy="80" r="3" fill="#D4A5A5" opacity="0.6"/>
+  <circle cx="320" cy="100" r="2" fill="#D4A5A5" opacity="0.4"/>
+  <circle cx="80" cy="220" r="2.5" fill="#9E7676" opacity="0.5"/>
+  <circle cx="340" cy="240" r="2" fill="#9E7676" opacity="0.3"/>
+</svg>

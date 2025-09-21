@@ -1,12 +1,54 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "../components/Footer";
 
 function MainComponent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [visibleSections, setVisibleSections] = useState(new Set());
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    const handleScroll = () => {
+      const sections = document.querySelectorAll('section[id]');
+      const newVisibleSections = new Set();
+      
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight * 0.8 && rect.bottom > 0;
+        if (isVisible) {
+          newVisibleSections.add(section.id);
+        }
+      });
+      
+      setVisibleSections(newVisibleSections);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // 初期チェック
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#FDF8F5] relative overflow-hidden">
+      {/* マウス追跡用の黄色い円 */}
+      <div 
+        className="fixed w-8 h-8 bg-yellow-400 rounded-full pointer-events-none z-50 opacity-30 transition-all duration-100 ease-out"
+        style={{
+          left: mousePosition.x - 16,
+          top: mousePosition.y - 16,
+          transform: 'scale(1)',
+        }}
+      />
+      
       {/* 桜の花びらのコンテナ */}
       <div className="absolute inset-0 pointer-events-none z-0">
         {[...Array(10)].map((_, i) => (
@@ -90,19 +132,48 @@ function MainComponent() {
         </div>
       </header>
 
-      <section className="pt-24 md:pt-32 px-4">
-        <div className="container mx-auto text-center py-20">
-          <h2 className="text-4xl md:text-6xl font-cormorant text-[#9E7676] mb-6">
-            Welcome to egg
-          </h2>
-          <p className="text-lg md:text-xl font-crimson-text text-[#615555] max-w-2xl mx-auto">
-            Crafting beautiful experiences through fragrance and digital
-            excellence
-          </p>
+      <section className="pt-24 md:pt-32 px-4 relative overflow-hidden">
+        <div className="container mx-auto py-20 relative z-10">
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            {/* 左側のテキスト */}
+            <div className="md:w-1/2 text-left mb-8 md:mb-0">
+              <h1 className="text-4xl md:text-6xl font-serif text-[#9E7676] mb-4 animate-fade-in-up leading-tight">
+                All Starts<br />
+                With Eggs
+              </h1>
+              <h2 className="text-2xl md:text-3xl font-cormorant text-[#9E7676] mb-6 animate-fade-in-up-delay">
+                Welcome to egg
+              </h2>
+              <p className="text-lg md:text-xl font-crimson-text text-[#615555] max-w-lg animate-fade-in-up-delay-2">
+                Crafting beautiful experiences through fragrance and digital
+                excellence
+              </p>
+            </div>
+            
+            {/* 右側の卵の画像 */}
+            <div className="md:w-1/2 flex justify-center">
+              <div className="relative group">
+                <img 
+                  src="/images/egg-simple.svg" 
+                  alt="Egg" 
+                  className="w-64 h-48 animate-float"
+                />
+                <div className="absolute inset-0 pointer-events-none">
+                  <div className="yellow-circle group-hover:opacity-100 opacity-0 transition-opacity duration-300"></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+        
+        {/* 背景装飾 */}
+        <div className="absolute top-20 left-10 w-4 h-4 bg-[#D4A5A5] rounded-full opacity-30 animate-pulse"></div>
+        <div className="absolute top-40 right-20 w-3 h-3 bg-[#9E7676] rounded-full opacity-40 animate-pulse delay-1000"></div>
+        <div className="absolute bottom-20 left-20 w-5 h-5 bg-[#D4A5A5] rounded-full opacity-20 animate-pulse delay-2000"></div>
+        <div className="absolute bottom-40 right-10 w-2 h-2 bg-[#9E7676] rounded-full opacity-50 animate-pulse delay-500"></div>
       </section>
 
-      <section id="business" className="py-16 px-4 relative">
+      <section id="business" className={`py-16 px-4 relative transition-all duration-1000 ${visibleSections.has('business') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <div
           className="absolute inset-0 z-0"
           style={{
@@ -187,12 +258,30 @@ function MainComponent() {
         </div>
       </section>
 
-      <section id="contact" className="py-16 px-4 bg-white">
+      <section id="contact" className={`py-16 px-4 bg-white transition-all duration-1000 ${visibleSections.has('contact') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <div className="container mx-auto max-w-xl">
           <h2 className="text-3xl md:text-4xl font-cormorant text-[#9E7676] text-center mb-12">
             Contact Us
           </h2>
-          <form className="space-y-6">
+          <form 
+            className="space-y-6"
+            action="mailto:info@eggs.email"
+            method="post"
+            encType="text/plain"
+            onSubmit={(e) => {
+              e.preventDefault();
+              const formData = new FormData(e.target);
+              const name = formData.get('name');
+              const email = formData.get('email');
+              const message = formData.get('message');
+              
+              const subject = `【HP問い合わせ】_${name}`;
+              const body = `名前: ${name}\nメールアドレス: ${email}\n\nメッセージ:\n${message}`;
+              
+              const mailtoLink = `mailto:info@eggs.email?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+              window.location.href = mailtoLink;
+            }}
+          >
             <div>
               <input
                 type="text"
@@ -269,17 +358,6 @@ function MainComponent() {
         </div>
       </section>
 
-      <section id="legal" className="py-8 px-4 bg-[#FDF8F5]">
-        <div className="container mx-auto max-w-3xl text-center">
-          <a 
-            href="/tokushoho" 
-            className="text-lg font-cormorant text-[#9E7676] hover:text-[#8B6B6B] transition-colors duration-300 underline"
-          >
-            特定商取引法に基づく表記
-          </a>
-        </div>
-      </section>
-
       <Footer />
 
       <style jsx global>{`
@@ -287,6 +365,71 @@ function MainComponent() {
           from { opacity: 0; transform: translateY(20px); }
           to { opacity: 1; transform: translateY(0); }
         }
+        
+        @keyframes fadeInUp {
+          from { 
+            opacity: 0; 
+            transform: translateY(30px); 
+          }
+          to { 
+            opacity: 1; 
+            transform: translateY(0); 
+          }
+        }
+        
+        @keyframes float {
+          0%, 100% { 
+            transform: translateY(0px); 
+          }
+          50% { 
+            transform: translateY(-10px); 
+          }
+        }
+        
+        .animate-float {
+          animation: float 3s ease-in-out infinite;
+        }
+        
+        .animate-fade-in-up {
+          animation: fadeInUp 1s ease-out;
+        }
+        
+        .animate-fade-in-up-delay {
+          animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        .animate-fade-in-up-delay-2 {
+          animation: fadeInUp 1s ease-out 0.6s both;
+        }
+        
+        .yellow-circle {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 100px;
+          height: 100px;
+          background: radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, rgba(255, 215, 0, 0) 70%);
+          border-radius: 50%;
+          transform: translate(-50%, -50%);
+          pointer-events: none;
+        }
+        
+        .animate-pulse {
+          animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        .delay-500 {
+          animation-delay: 0.5s;
+        }
+        
+        .delay-1000 {
+          animation-delay: 1s;
+        }
+        
+        .delay-2000 {
+          animation-delay: 2s;
+        }
+        
         section {
           animation: fadeIn 0.8s ease-out;
         }

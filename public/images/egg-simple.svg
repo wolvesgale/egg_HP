@@ -1,0 +1,24 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="eggGradient" cx="0.4" cy="0.3" r="0.8">
+      <stop offset="0%" style="stop-color:#FFFEF7;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#FFF8E7;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#F5F0E8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E8E0D6;stop-opacity:1" />
+    </radialGradient>
+    <radialGradient id="shadowGradient" cx="0.5" cy="0.8" r="0.6">
+      <stop offset="0%" style="stop-color:#D4C4B0;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#D4C4B0;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+  
+  <!-- 影 -->
+  <ellipse cx="100" cy="170" rx="45" ry="15" fill="url(#shadowGradient)" />
+  
+  <!-- 卵の本体 -->
+  <ellipse cx="100" cy="100" rx="50" ry="70" fill="url(#eggGradient)" stroke="#E0D5C7" stroke-width="1"/>
+  
+  <!-- ハイライト -->
+  <ellipse cx="85" cy="75" rx="12" ry="18" fill="#FFFFFF" opacity="0.6"/>
+  <ellipse cx="88" cy="78" rx="4" ry="6" fill="#FFFFFF" opacity="0.8"/>
+</svg>
