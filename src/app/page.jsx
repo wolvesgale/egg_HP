@@ -1,0 +1,339 @@
+"use client";
+import React, { useState } from "react";
+import Footer from "../components/Footer";
+
+function MainComponent() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  return (
+    <div className="min-h-screen bg-[#FDF8F5] relative overflow-hidden">
+      {/* 桜の花びらのコンテナ */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        {[...Array(10)].map((_, i) => (
+          <div
+            key={i}
+            className="sakura-petal"
+            style={{
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 10}s`,
+              animationDuration: `${15 + Math.random() * 10}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      <header className="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
+        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+          <div className="flex items-center">
+            <div className="flex items-center space-x-2">
+              {/* かわいらしい卵のロゴマーク */}
+              <div className="w-10 h-10 rounded-full bg-[#D4A5A5] flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center">
+                  <div className="w-6 h-6 rounded-full bg-[#FFE5E5]" />
+                </div>
+              </div>
+              <h1 className="text-2xl font-cormorant text-[#D4A5A5]">
+                株式会社egg
+              </h1>
+            </div>
+          </div>
+
+          <button
+            className="md:hidden text-[#9E7676]"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <i
+              className={`fas ${isMenuOpen ? "fa-times" : "fa-bars"} text-xl`}
+            ></i>
+          </button>
+
+          <nav
+            className={`absolute md:relative top-full left-0 w-full md:w-auto bg-white md:bg-transparent ${
+              isMenuOpen ? "block" : "hidden"
+            } md:block`}
+          >
+            <ul className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8 p-4 md:p-0">
+              <li>
+                <a
+                  href="#about"
+                  className="text-[#9E7676] hover:text-[#D4A5A5] font-cormorant"
+                >
+                  About
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/new-page"
+                  className="text-[#9E7676] hover:text-[#D4A5A5] font-cormorant"
+                >
+                  Business
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#company"
+                  className="text-[#9E7676] hover:text-[#D4A5A5] font-cormorant"
+                >
+                  Company
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  className="text-[#9E7676] hover:text-[#D4A5A5] font-cormorant"
+                >
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <section className="pt-24 md:pt-32 px-4">
+        <div className="container mx-auto text-center py-20">
+          <h2 className="text-4xl md:text-6xl font-cormorant text-[#9E7676] mb-6">
+            Welcome to egg
+          </h2>
+          <p className="text-lg md:text-xl font-crimson-text text-[#615555] max-w-2xl mx-auto">
+            Crafting beautiful experiences through fragrance and digital
+            excellence
+          </p>
+        </div>
+      </section>
+
+      <section id="business" className="py-16 px-4 relative">
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage:
+              'url("https://ucarecdn.com/1d34455e-d54c-45fd-b869-ff01a0d6e1f8/-/format/auto/")',
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            opacity: "0.15",
+          }}
+        />
+        <div className="container mx-auto relative z-10">
+          <h2 className="text-3xl md:text-4xl font-cormorant text-[#9E7676] text-center mb-12">
+            Our Business
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-[#FDF8F5] p-8 rounded-lg text-center relative group">
+              <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-lg z-10" />
+              <div className="relative z-20">
+                <div className="w-16 h-16 mx-auto mb-6 bg-[#D4A5A5] rounded-full flex items-center justify-center">
+                  <i className="fas fa-store text-2xl text-white"></i>
+                </div>
+                <h3 className="text-2xl font-cormorant text-[#9E7676] mb-4">
+                  EC運営管理
+                </h3>
+                <p className="font-crimson-text text-[#615555] mb-4">
+                  オンラインストアの構築から運営まで、包括的なECソリューションを提供。
+                  お客様のブランドに最適化されたEC戦略を実現します。
+                </p>
+                <a
+                  href="/ec-management"
+                  className="hidden group-hover:inline-block text-white font-cormorant text-lg transition-all duration-300"
+                >
+                  詳細ページへ
+                </a>
+              </div>
+            </div>
+
+            <div className="bg-[#FDF8F5] p-8 rounded-lg text-center relative group">
+              <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-lg z-10" />
+              <div className="relative z-20">
+                <div className="w-16 h-16 mx-auto mb-6 bg-[#D4A5A5] rounded-full flex items-center justify-center">
+                  <i className="fas fa-flask text-2xl text-white"></i>
+                </div>
+                <h3 className="text-2xl font-cormorant text-[#9E7676] mb-4">
+                  調香/香料販売
+                </h3>
+                <p className="font-crimson-text text-[#615555] mb-4">
+                  独自の調香技術と厳選された香料のセレクション。
+                  心地よい香りで特別な空間を演出します。
+                </p>
+                <a
+                  href="/fragrance"
+                  className="hidden group-hover:inline-block text-white font-cormorant text-lg transition-all duration-300"
+                >
+                  詳細ページへ
+                </a>
+              </div>
+            </div>
+
+            <div className="bg-[#FDF8F5] p-8 rounded-lg text-center relative group">
+              <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-lg z-10" />
+              <div className="relative z-20">
+                <div className="w-16 h-16 mx-auto mb-6 bg-[#D4A5A5] rounded-full flex items-center justify-center">
+                  <i className="fas fa-laptop-code text-2xl text-white"></i>
+                </div>
+                <h3 className="text-2xl font-cormorant text-[#9E7676] mb-4">
+                  DXコンサルタント
+                </h3>
+                <p className="font-crimson-text text-[#615555] mb-4">
+                  デジタル技術を活用した業務改革と効率化。
+                  お客様のビジネスの未来をデザインします。
+                </p>
+                <a
+                  href="/dx-consulting"
+                  className="hidden group-hover:inline-block text-white font-cormorant text-lg transition-all duration-300"
+                >
+                  詳細ページへ
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="py-16 px-4 bg-white">
+        <div className="container mx-auto max-w-xl">
+          <h2 className="text-3xl md:text-4xl font-cormorant text-[#9E7676] text-center mb-12">
+            Contact Us
+          </h2>
+          <form className="space-y-6">
+            <div>
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                className="w-full p-3 border border-[#D4A5A5] rounded-lg focus:outline-none focus:border-[#9E7676]"
+              />
+            </div>
+            <div>
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                className="w-full p-3 border border-[#D4A5A5] rounded-lg focus:outline-none focus:border-[#9E7676]"
+              />
+            </div>
+            <div>
+              <textarea
+                name="message"
+                placeholder="Your Message"
+                rows="5"
+                className="w-full p-3 border border-[#D4A5A5] rounded-lg focus:outline-none focus:border-[#9E7676]"
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              className="w-full bg-[#D4A5A5] text-white py-3 rounded-lg hover:bg-[#9E7676] transition-colors font-cormorant text-lg"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <section id="company" className="py-16 px-4">
+        <div className="container mx-auto">
+          <h2 className="text-3xl md:text-4xl font-cormorant text-[#9E7676] text-center mb-12">
+            Company Profile
+          </h2>
+          <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg">
+            <div className="space-y-4">
+              <div className="flex flex-col md:flex-row">
+                <span className="font-cormorant text-[#9E7676] w-32">
+                  Company
+                </span>
+                <span className="font-crimson-text text-[#615555]">
+                  株式会社egg
+                </span>
+              </div>
+              <div className="flex flex-col md:flex-row">
+                <span className="font-cormorant text-[#9E7676] w-32">CEO</span>
+                <span className="font-crimson-text text-[#615555]">
+                  前田 拡夢
+                </span>
+              </div>
+              <div className="flex flex-col md:flex-row">
+                <span className="font-cormorant text-[#9E7676] w-32">
+                  Location
+                </span>
+                <span className="font-crimson-text text-[#615555]">
+                  〒661-0977
+                  <br />
+                  兵庫県尼崎市竹谷町3丁目89-4
+                </span>
+              </div>
+              <div className="flex flex-col md:flex-row">
+                <span className="font-cormorant text-[#9E7676] w-32">
+                  Founded
+                </span>
+                <span className="font-crimson-text text-[#615555]">2025</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="legal" className="py-8 px-4 bg-[#FDF8F5]">
+        <div className="container mx-auto max-w-3xl text-center">
+          <a 
+            href="/tokushoho" 
+            className="text-lg font-cormorant text-[#9E7676] hover:text-[#8B6B6B] transition-colors duration-300 underline"
+          >
+            特定商取引法に基づく表記
+          </a>
+        </div>
+      </section>
+
+      <Footer />
+
+      <style jsx global>{`
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        section {
+          animation: fadeIn 0.8s ease-out;
+        }
+
+        /* 桜の花びらのスタイル */
+        .sakura-petal {
+          position: absolute;
+          width: 15px;
+          height: 15px;
+          background: #FFE5E5;
+          border-radius: 150% 0 150% 0;
+          animation: falling linear infinite;
+          transform-origin: center;
+          opacity: 0.5;
+        }
+
+        @keyframes falling {
+          0% {
+            top: -10%;
+            transform: rotate(0deg) translateX(0);
+          }
+          15% {
+            transform: rotate(45deg) translateX(-100px);
+          }
+          30% {
+            transform: rotate(90deg) translateX(100px);
+          }
+          45% {
+            transform: rotate(135deg) translateX(-80px);
+          }
+          60% {
+            transform: rotate(180deg) translateX(80px);
+          }
+          75% {
+            transform: rotate(225deg) translateX(-60px);
+          }
+          90% {
+            transform: rotate(270deg) translateX(40px);
+          }
+          100% {
+            top: 110%;
+            transform: rotate(360deg) translateX(0);
+          }
+        }
+      `}</style>
+    </div>
+  );
+}
+
+export default MainComponent;

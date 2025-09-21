@@ -1,0 +1,88 @@
+<svg width="800" height="450" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="450" fill="#FDF8F5"/>
+  
+  <!-- Header -->
+  <rect x="0" y="0" width="800" height="60" fill="#9E7676"/>
+  <text x="30" y="35" font-family="Arial, sans-serif" font-size="18" fill="white" font-weight="bold">EC管理ダッシュボード</text>
+  
+  <!-- Navigation -->
+  <rect x="0" y="60" width="200" height="390" fill="#D4A5A5"/>
+  <text x="20" y="90" font-family="Arial, sans-serif" font-size="14" fill="white">売上管理</text>
+  <text x="20" y="120" font-family="Arial, sans-serif" font-size="14" fill="white">在庫管理</text>
+  <text x="20" y="150" font-family="Arial, sans-serif" font-size="14" fill="white">受注管理</text>
+  <text x="20" y="180" font-family="Arial, sans-serif" font-size="14" fill="white">商品管理</text>
+  <text x="20" y="210" font-family="Arial, sans-serif" font-size="14" fill="white">顧客管理</text>
+  
+  <!-- Main Content Area -->
+  <rect x="200" y="60" width="600" height="390" fill="white"/>
+  
+  <!-- Sales Chart -->
+  <rect x="220" y="80" width="280" height="160" fill="#FFE5E5" stroke="#D4A5A5" stroke-width="1"/>
+  <text x="230" y="100" font-family="Arial, sans-serif" font-size="14" fill="#615555" font-weight="bold">月間売上推移</text>
+  
+  <!-- Chart bars -->
+  <rect x="240" y="180" width="20" height="40" fill="#9E7676"/>
+  <rect x="270" y="160" width="20" height="60" fill="#9E7676"/>
+  <rect x="300" y="140" width="20" height="80" fill="#9E7676"/>
+  <rect x="330" y="120" width="20" height="100" fill="#9E7676"/>
+  <rect x="360" y="130" width="20" height="90" fill="#9E7676"/>
+  <rect x="390" y="110" width="20" height="110" fill="#9E7676"/>
+  <rect x="420" y="100" width="20" height="120" fill="#9E7676"/>
+  <rect x="450" y="90" width="20" height="130" fill="#9E7676"/>
+  
+  <!-- Inventory Status -->
+  <rect x="520" y="80" width="260" height="160" fill="#FFE5E5" stroke="#D4A5A5" stroke-width="1"/>
+  <text x="530" y="100" font-family="Arial, sans-serif" font-size="14" fill="#615555" font-weight="bold">在庫状況</text>
+  
+  <!-- Inventory items -->
+  <rect x="530" y="120" width="240" height="20" fill="#FDF8F5" stroke="#D4A5A5" stroke-width="1"/>
+  <text x="535" y="135" font-family="Arial, sans-serif" font-size="12" fill="#615555">商品A: 在庫 150個</text>
+  <rect x="530" y="145" width="240" height="20" fill="#FDF8F5" stroke="#D4A5A5" stroke-width="1"/>
+  <text x="535" y="160" font-family="Arial, sans-serif" font-size="12" fill="#615555">商品B: 在庫 89個</text>
+  <rect x="530" y="170" width="240" height="20" fill="#FFE5E5" stroke="#D4A5A5" stroke-width="1"/>
+  <text x="535" y="185" font-family="Arial, sans-serif" font-size="12" fill="#9E7676">商品C: 在庫 12個 (要補充)</text>
+  <rect x="530" y="195" width="240" height="20" fill="#FDF8F5" stroke="#D4A5A5" stroke-width="1"/>
+  <text x="535" y="210" font-family="Arial, sans-serif" font-size="12" fill="#615555">商品D: 在庫 203個</text>
+  
+  <!-- Recent Orders -->
+  <rect x="220" y="260" width="560" height="170" fill="#FFE5E5" stroke="#D4A5A5" stroke-width="1"/>
+  <text x="230" y="280" font-family="Arial, sans-serif" font-size="14" fill="#615555" font-weight="bold">最新受注一覧</text>
+  
+  <!-- Order table header -->
+  <rect x="230" y="290" width="540" height="25" fill="#D4A5A5"/>
+  <text x="240" y="307" font-family="Arial, sans-serif" font-size="12" fill="white">注文番号</text>
+  <text x="340" y="307" font-family="Arial, sans-serif" font-size="12" fill="white">顧客名</text>
+  <text x="440" y="307" font-family="Arial, sans-serif" font-size="12" fill="white">商品</text>
+  <text x="580" y="307" font-family="Arial, sans-serif" font-size="12" fill="white">金額</text>
+  <text x="680" y="307" font-family="Arial, sans-serif" font-size="12" fill="white">状態</text>
+  
+  <!-- Order rows -->
+  <rect x="230" y="315" width="540" height="20" fill="white" stroke="#D4A5A5" stroke-width="0.5"/>
+  <text x="240" y="328" font-family="Arial, sans-serif" font-size="11" fill="#615555">#2024001</text>
+  <text x="340" y="328" font-family="Arial, sans-serif" font-size="11" fill="#615555">田中様</text>
+  <text x="440" y="328" font-family="Arial, sans-serif" font-size="11" fill="#615555">商品A x2</text>
+  <text x="580" y="328" font-family="Arial, sans-serif" font-size="11" fill="#615555">¥15,800</text>
+  <text x="680" y="328" font-family="Arial, sans-serif" font-size="11" fill="#9E7676">発送済</text>
+  
+  <rect x="230" y="335" width="540" height="20" fill="#FDF8F5" stroke="#D4A5A5" stroke-width="0.5"/>
+  <text x="240" y="348" font-family="Arial, sans-serif" font-size="11" fill="#615555">#2024002</text>
+  <text x="340" y="348" font-family="Arial, sans-serif" font-size="11" fill="#615555">佐藤様</text>
+  <text x="440" y="348" font-family="Arial, sans-serif" font-size="11" fill="#615555">商品B x1</text>
+  <text x="580" y="348" font-family="Arial, sans-serif" font-size="11" fill="#615555">¥8,900</text>
+  <text x="680" y="348" font-family="Arial, sans-serif" font-size="11" fill="#D4A5A5">処理中</text>
+  
+  <rect x="230" y="355" width="540" height="20" fill="white" stroke="#D4A5A5" stroke-width="0.5"/>
+  <text x="240" y="368" font-family="Arial, sans-serif" font-size="11" fill="#615555">#2024003</text>
+  <text x="340" y="368" font-family="Arial, sans-serif" font-size="11" fill="#615555">鈴木様</text>
+  <text x="440" y="368" font-family="Arial, sans-serif" font-size="11" fill="#615555">商品C x3</text>
+  <text x="580" y="368" font-family="Arial, sans-serif" font-size="11" fill="#615555">¥24,300</text>
+  <text x="680" y="368" font-family="Arial, sans-serif" font-size="11" fill="#9E7676">発送済</text>
+  
+  <rect x="230" y="375" width="540" height="20" fill="#FDF8F5" stroke="#D4A5A5" stroke-width="0.5"/>
+  <text x="240" y="388" font-family="Arial, sans-serif" font-size="11" fill="#615555">#2024004</text>
+  <text x="340" y="388" font-family="Arial, sans-serif" font-size="11" fill="#615555">高橋様</text>
+  <text x="440" y="388" font-family="Arial, sans-serif" font-size="11" fill="#615555">商品A x1</text>
+  <text x="580" y="388" font-family="Arial, sans-serif" font-size="11" fill="#615555">¥7,900</text>
+  <text x="680" y="388" font-family="Arial, sans-serif" font-size="11" fill="#D4A5A5">入金待ち</text>
+</svg>
