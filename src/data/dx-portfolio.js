@@ -1,43 +1,70 @@
 /**
  * DXポートフォリオ データ管理ファイル
- *
- * 案件を追加する場合は、以下の配列に新しいオブジェクトを追加してください。
  * slug はURLになります（英数字・ハイフンのみ）。
  */
 
 export const portfolioItems = [
   {
     slug: "tenku",
-    type: "product",         // "product" | "case-study"
+    type: "product",
     featured: true,
-    title: "TENKU",
-    tagline: "クラウドネイティブ SaaS プロダクト",
+    title: "TENKU AI Agent",
+    tagline: "技能実習・特定技能・特定活動を1システムで統合管理",
     description:
-      "TENKUは、egg が開発・提供するSaaSプロダクトです。" +
-      "詳細・デモ・お申込みは製品ページをご覧ください。",
-    thumbnail: null,         // 画像パスを設定: "/images/tenku-thumb.png"
-    tags: ["SaaS", "AWS", "クラウド"],
+      "TENKU-AI（TENKU AI Agent）は、技能実習（TITP）／特定技能（SSW）／特定活動（TA）の在留資格管理・書類生成・更新通知を「1システムで統合管理」するクラウドネイティブ SaaS プロダクトです。" +
+      "煩雑な外国人労働者の在留管理業務を自動化し、コンプライアンスリスクの低減と業務効率化を同時に実現します。",
+    thumbnail: null,
+    tags: ["SaaS", "AWS", "技能実習 TITP", "特定技能 SSW", "特定活動 TA", "AI Agent", "在留資格管理"],
     links: {
-      demo: "TENKU_DEMO_URL",         // TODO: 実際のデモURLに変更
-      purchase: "TENKU_PURCHASE_URL", // TODO: 実際の購入URLに変更
-      signup: "TENKU_SIGNUP_URL",     // TODO: 実際の申込URLに変更
+      demo:     "TENKU_DEMO_URL",
+      purchase: "TENKU_PURCHASE_URL",
+      signup:   "TENKU_SIGNUP_URL",
     },
   },
-  // ── 案件実績はここから追加 ──────────────────────────────────────────────
-  // {
-  //   slug: "case-sample",
-  //   type: "case-study",
-  //   featured: false,
-  //   title: "案件タイトル",
-  //   tagline: "業種・会社概要",
-  //   description: "案件の説明。課題・取り組み・成果を記載。",
-  //   thumbnail: "/images/cases/sample-thumb.png",
-  //   tags: ["AWS", "DX", "業務改善"],
-  //   results: ["成果1", "成果2"],
-  //   screenshots: [
-  //     { src: "/images/cases/sample-01.png", caption: "画面キャプション" },
-  //   ],
-  // },
+
+  // ── 案件実績 ──────────────────────────────────────────────────────────────
+
+  {
+    slug: "wholesale-system-renewal",
+    type: "case-study",
+    featured: false,
+    title: "Webシステム刷新プロジェクト",
+    tagline: "卸売業企業向け統合管理システム",
+    description:
+      "卸売業の受発注・在庫・請求管理をクラウドネイティブ構成にリニューアル。" +
+      "Next.js 15 × AWS Lambda × RDS (PostgreSQL) でサーバーレスアーキテクチャを採用し、" +
+      "業務の自動化と可視化を実現しました。Amplify によるホスティングで DevOps も刷新。",
+    thumbnail: null,
+    tags: ["Next.js 15", "AWS Lambda", "Amazon RDS", "PostgreSQL", "Amplify", "TypeScript", "サーバーレス"],
+    results: [
+      "受発注処理の自動化・ペーパーレス化",
+      "在庫データのリアルタイム可視化",
+      "システム運用コスト大幅削減",
+      "Amplify CI/CD による開発速度向上",
+    ],
+    screenshots: [],
+  },
+
+  {
+    slug: "store-management-system",
+    type: "case-study",
+    featured: false,
+    title: "店舗管理統合システム",
+    tagline: "勤怠・レジ・売上管理の一元化",
+    description:
+      "複数店舗の勤怠打刻・POSレジ・売上データをリアルタイムに一元管理するシステムを構築。" +
+      "Supabase をバックエンドに据えたモバイルファーストの設計で、" +
+      "現場スタッフがスマートフォンから直感的に操作できる UX を実現しました。",
+    thumbnail: null,
+    tags: ["Supabase", "Next.js", "TypeScript", "モバイル対応", "リアルタイム DB", "PWA"],
+    results: [
+      "勤怠管理の完全デジタル化",
+      "売上データのリアルタイム集計・可視化",
+      "複数店舗間のデータ共有・比較分析",
+      "スマートフォン対応でペーパーレス運用",
+    ],
+    screenshots: [],
+  },
 ];
 
 export function getPortfolioItem(slug) {
