@@ -1,125 +1,157 @@
 "use client";
-import React from "react";
+import Link from "next/link";
+import { portfolioItems, getCaseStudies } from "../../data/dx-portfolio";
 
-function MainComponent() {
+export default function DxConsultingPage() {
+  const featured = portfolioItems.find((item) => item.featured);
+  const cases = getCaseStudies();
+
   return (
-    <div className="min-h-screen bg-[#FDF8F5]">
-      <header className="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
-        <div className="container mx-auto px-4 py-3">
-          <a href="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 rounded-full bg-[#D4A5A5] flex items-center justify-center">
-              <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center">
-                <div className="w-6 h-6 rounded-full bg-[#FFE5E5]" />
+    <main className="pt-28 pb-20 px-6">
+      <div className="container mx-auto max-w-5xl">
+
+        {/* ── Page Header ── */}
+        <div className="text-center mb-16">
+          <p className="text-aws-orange font-mono text-xs tracking-widest mb-3">EGG DX & PRODUCTS</p>
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-5 leading-tight">
+            Digital<br />
+            <span className="text-aws-orange">Transformation</span>
+          </h1>
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">
+            外資大手パブリッククラウド・スタートアップまで経験したコンサルタントが、
+            DX推進・クラウド活用・業務改革をお手伝いします。
+          </p>
+        </div>
+
+        {/* ── Featured Product: TENKU ── */}
+        {featured && (
+          <div className="mb-20">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="h-px flex-1 bg-aws-orange/20" />
+              <span className="text-aws-orange text-xs font-mono tracking-widest">FEATURED PRODUCT</span>
+              <div className="h-px flex-1 bg-aws-orange/20" />
+            </div>
+
+            <div className="border border-aws-orange/30 rounded-2xl overflow-hidden bg-aws-card hover:border-aws-orange/60 transition-all duration-300">
+              <div className="p-8 md:p-12 flex flex-col md:flex-row items-center gap-10">
+                {/* Text */}
+                <div className="flex-1">
+                  <div className="inline-block bg-aws-orange text-aws-dark text-xs font-bold px-3 py-1 rounded-full mb-4 tracking-widest">
+                    TENKU
+                  </div>
+                  <h2 className="text-4xl md:text-5xl font-bold text-white mb-2">TENKU</h2>
+                  <p className="text-aws-orange mb-4 font-medium">{featured.tagline}</p>
+                  <p className="text-gray-300 mb-6 leading-relaxed">{featured.description}</p>
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {featured.tags.map((tag) => (
+                      <span key={tag} className="bg-aws-dark text-gray-400 text-xs px-3 py-1 rounded-full border border-white/10">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap gap-3">
+                    <a
+                      href={featured.links.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-aws-orange text-aws-dark font-bold px-5 py-2 rounded-lg hover:bg-yellow-400 transition-colors text-sm"
+                    >
+                      <i className="fas fa-play-circle" /> デモを見る
+                    </a>
+                    <a
+                      href={featured.links.signup}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 border border-aws-orange text-aws-orange font-bold px-5 py-2 rounded-lg hover:bg-aws-orange hover:text-aws-dark transition-colors text-sm"
+                    >
+                      <i className="fas fa-file-signature" /> お申込み
+                    </a>
+                  </div>
+                </div>
+
+                {/* Visual */}
+                <div className="flex-shrink-0 w-64 h-48 bg-aws-dark rounded-xl flex items-center justify-center border border-white/10">
+                  {featured.thumbnail ? (
+                    <img src={featured.thumbnail} alt={featured.title} className="w-full h-full object-cover rounded-xl" />
+                  ) : (
+                    <div className="text-center">
+                      <i className="fas fa-cloud text-aws-orange text-5xl mb-3 opacity-80" />
+                      <p className="text-gray-500 text-sm font-mono tracking-widest">TENKU</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Footer bar */}
+              <div className="border-t border-white/5 px-8 md:px-12 py-4 flex items-center justify-between">
+                <span className="text-gray-500 text-sm">製品詳細・デモ・お申込みはこちら</span>
+                <Link href="/dx-consulting/tenku" className="text-aws-orange text-sm hover:underline">
+                  詳細を見る →
+                </Link>
               </div>
             </div>
-            <h1 className="text-2xl font-cormorant text-[#D4A5A5]">
-              株式会社egg
-            </h1>
+          </div>
+        )}
+
+        {/* ── Case Studies ── */}
+        <div>
+          <div className="flex items-center gap-3 mb-8">
+            <div className="h-px flex-1 bg-white/10" />
+            <span className="text-gray-400 text-xs font-mono tracking-widest">CASE STUDIES</span>
+            <div className="h-px flex-1 bg-white/10" />
+          </div>
+
+          {cases.length > 0 ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {cases.map((item) => (
+                <Link key={item.slug} href={`/dx-consulting/${item.slug}`}>
+                  <div className="group bg-aws-card rounded-xl overflow-hidden hover:bg-[#354a60] transition-colors border border-white/5 hover:border-aws-orange/20">
+                    <div className="aspect-video bg-aws-darker flex items-center justify-center">
+                      {item.thumbnail ? (
+                        <img src={item.thumbnail} alt={item.title} className="w-full h-full object-cover" />
+                      ) : (
+                        <i className="fas fa-laptop-code text-aws-orange/30 text-5xl" />
+                      )}
+                    </div>
+                    <div className="p-5">
+                      <h3 className="text-white font-semibold mb-1 group-hover:text-aws-orange transition-colors">
+                        {item.title}
+                      </h3>
+                      <p className="text-gray-500 text-sm mb-3">{item.tagline}</p>
+                      <div className="flex flex-wrap gap-1">
+                        {item.tags.map((tag) => (
+                          <span key={tag} className="bg-aws-dark text-gray-500 text-xs px-2 py-0.5 rounded border border-white/5">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-20 border border-dashed border-white/10 rounded-2xl">
+              <i className="fas fa-folder-open text-white/10 text-6xl mb-5" />
+              <p className="text-gray-600 font-mono text-sm">案件実績は随時追加予定です</p>
+            </div>
+          )}
+        </div>
+
+        {/* ── CTA ── */}
+        <div className="mt-20 bg-aws-card rounded-2xl p-10 md:p-14 text-center border border-white/5">
+          <h3 className="text-3xl font-bold text-white mb-4">DX推進のご相談</h3>
+          <p className="text-gray-400 mb-8 max-w-xl mx-auto leading-relaxed">
+            クラウド活用・業務改革・システム開発・TENKU の導入についてお気軽にご相談ください。
+          </p>
+          <a
+            href="/#contact"
+            className="inline-block bg-aws-orange text-aws-dark font-bold py-3 px-10 rounded-lg hover:bg-yellow-400 transition-colors tracking-wide"
+          >
+            お問い合わせ
           </a>
         </div>
-      </header>
-
-      <main className="pt-24 md:pt-32">
-        <section className="container mx-auto px-4 py-12">
-          <h2 className="text-4xl md:text-5xl font-cormorant text-[#9E7676] text-center mb-8">
-            DXコンサルティング
-          </h2>
-          <p className="text-xl font-crimson-text text-[#615555] text-center max-w-3xl mx-auto mb-16">
-            外資大手パブリッククラウド、スタートアップまで経験をしたコンサルタントが
-            実務の改善をお手伝いします
-          </p>
-
-          <div className="max-w-4xl mx-auto mb-16">
-            <div className="aspect-video rounded-lg overflow-hidden shadow-lg">
-              <img
-                src="https://ucarecdn.com/6e29838c-76b9-4003-ae7b-2c435dfe3b69/-/format/auto/"
-                alt="DXコンサルティングイメージ - クラウドビジネス対話"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <div className="bg-white p-8 rounded-lg shadow-sm text-center">
-              <div className="w-16 h-16 mx-auto mb-6 bg-[#D4A5A5] rounded-full flex items-center justify-center">
-                <i className="fas fa-cloud text-2xl text-white"></i>
-              </div>
-              <h3 className="text-2xl font-cormorant text-[#9E7676] mb-4">
-                クラウド導入支援
-              </h3>
-              <p className="font-crimson-text text-[#615555]">
-                AWS、Azure、GCPなど 主要クラウドの導入をサポート
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-lg shadow-sm text-center">
-              <div className="w-16 h-16 mx-auto mb-6 bg-[#D4A5A5] rounded-full flex items-center justify-center">
-                <i className="fas fa-sync text-2xl text-white"></i>
-              </div>
-              <h3 className="text-2xl font-cormorant text-[#9E7676] mb-4">
-                業務改革支援
-              </h3>
-              <p className="font-crimson-text text-[#615555]">
-                デジタル技術を活用した 業務プロセスの最適化
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-lg shadow-sm text-center">
-              <div className="w-16 h-16 mx-auto mb-6 bg-[#D4A5A5] rounded-full flex items-center justify-center">
-                <i className="fas fa-chart-bar text-2xl text-white"></i>
-              </div>
-              <h3 className="text-2xl font-cormorant text-[#9E7676] mb-4">
-                データ活用支援
-              </h3>
-              <p className="font-crimson-text text-[#615555]">
-                データ分析基盤の構築から 活用方法のコンサルティング
-              </p>
-            </div>
-          </div>
-
-          <div className="bg-white p-8 rounded-lg shadow-sm">
-            <h3 className="text-3xl font-cormorant text-[#9E7676] text-center mb-8">
-              支援実績
-            </h3>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h4 className="text-xl font-cormorant text-[#9E7676] mb-4">
-                  大手製造業
-                </h4>
-                <p className="font-crimson-text text-[#615555]">
-                  ・基幹システムのクラウド移行
-                  <br />
-                  ・データ分析基盤の構築
-                  <br />
-                  ・IoTセンサーデータの活用
-                </p>
-              </div>
-              <div>
-                <h4 className="text-xl font-cormorant text-[#9E7676] mb-4">
-                  スタートアップ企業
-                </h4>
-                <p className="font-crimson-text text-[#615555]">
-                  ・クラウドネイティブアーキテクチャの設計
-                  <br />
-                  ・マイクロサービス化支援
-                  <br />
-                  ・DevOps体制の構築
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <footer className="bg-[#FDF8F5] py-8 px-4 mt-16">
-        <div className="container mx-auto text-center">
-          <p className="font-crimson-text text-[#9E7676]">
-            © 2025 株式会社egg. All rights reserved.
-          </p>
-        </div>
-      </footer>
-    </div>
+      </div>
+    </main>
   );
 }
-
-export default MainComponent;
