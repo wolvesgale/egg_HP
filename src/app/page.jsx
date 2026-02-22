@@ -138,10 +138,15 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_20%,rgba(212,165,165,0.18),transparent_60%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_10%_80%,rgba(248,225,225,0.25),transparent_50%)]" />
 
-        {/* Decorative circles */}
-        <div className="absolute top-20 right-[5%] w-[520px] h-[520px] rounded-full border border-egg-pink/10 pointer-events-none" />
-        <div className="absolute top-32 right-[8%] w-[400px] h-[400px] rounded-full border border-egg-pink/12 pointer-events-none" />
-        <div className="absolute top-44 right-[12%] w-[280px] h-[280px] rounded-full bg-gradient-to-br from-egg-pink/8 to-egg-blush/20 pointer-events-none animate-pulse-slow" />
+        {/* Decorative egg silhouettes */}
+        <div
+          className="absolute top-12 right-[3%] w-[560px] h-[680px] border border-egg-pink/8 pointer-events-none"
+          style={{ borderRadius: "50% 50% 42% 42% / 55% 55% 45% 45%" }}
+        />
+        <div
+          className="absolute top-24 right-[6%] w-[420px] h-[520px] border border-egg-pink/10 pointer-events-none"
+          style={{ borderRadius: "50% 50% 42% 42% / 55% 55% 45% 45%" }}
+        />
 
         <div className="container mx-auto px-6 relative z-10 pt-24 pb-16">
           <div className="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-6">
@@ -184,25 +189,62 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Visual side */}
-            <div className="md:w-[40%] flex justify-center">
-              <div className="relative w-72 h-72 md:w-96 md:h-96">
-                {/* Outer ring */}
-                <div className="absolute inset-0 rounded-full border border-egg-pink/20 animate-spin-slow" />
-                {/* Mid ring */}
-                <div className="absolute inset-6 rounded-full border border-egg-pink/15" />
-                {/* Glow backdrop */}
-                <div className="absolute inset-8 rounded-full bg-gradient-to-br from-egg-pink/20 to-egg-blush/30 animate-float" />
-                {/* Center circle */}
-                <div className="absolute inset-12 rounded-full bg-white shadow-egg-lg flex items-center justify-center">
-                  <span className="font-cormorant text-egg-rose text-[5rem] md:text-[6.5rem] leading-none select-none italic">
-                    e
-                  </span>
+            {/* Visual side — Egg */}
+            <div className="md:w-[42%] flex justify-center">
+              <div className="relative flex items-center justify-center w-72 h-80 md:w-96 md:h-[26rem]">
+
+                {/* Outer glow orbit */}
+                <div
+                  className="absolute inset-0 animate-spin-slow opacity-30"
+                  style={{ borderRadius: "50% 50% 40% 40% / 55% 55% 45% 45%", border: "1px solid #D4A5A5" }}
+                />
+
+                {/* Shadow base — ellipse under the egg */}
+                <div
+                  className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[70%] h-5 blur-xl opacity-20"
+                  style={{ background: "#9E7676", borderRadius: "50%" }}
+                />
+
+                {/* Egg body */}
+                <div
+                  className="relative w-52 h-72 md:w-64 md:h-[22rem] animate-float shadow-egg-xl"
+                  style={{
+                    borderRadius: "50% 50% 42% 42% / 55% 55% 45% 45%",
+                    background: "linear-gradient(145deg, #fff 0%, #FFF5F5 35%, #F5E6E6 70%, #EDD8D8 100%)",
+                  }}
+                >
+                  {/* Specular highlight */}
+                  <div
+                    className="absolute top-[12%] left-[20%] w-[30%] h-[20%] opacity-70"
+                    style={{
+                      borderRadius: "50%",
+                      background: "linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 100%)",
+                      filter: "blur(4px)",
+                    }}
+                  />
+                  {/* Secondary highlight */}
+                  <div
+                    className="absolute top-[8%] left-[30%] w-[15%] h-[10%] opacity-50"
+                    style={{
+                      borderRadius: "50%",
+                      background: "rgba(255,255,255,0.9)",
+                      filter: "blur(2px)",
+                    }}
+                  />
+                  {/* Subtle color wash at base */}
+                  <div
+                    className="absolute bottom-0 left-0 right-0 h-[40%]"
+                    style={{
+                      borderRadius: "0 0 42% 42% / 0 0 45% 45%",
+                      background: "linear-gradient(to bottom, transparent, rgba(158,118,118,0.08))",
+                    }}
+                  />
                 </div>
-                {/* Dot accents */}
-                <div className="absolute top-8 right-8 w-3 h-3 rounded-full bg-egg-pink/60 animate-pulse-slow" />
-                <div className="absolute bottom-14 left-4 w-2 h-2 rounded-full bg-egg-rose/40" />
-                <div className="absolute top-1/2 -right-4 w-2 h-2 rounded-full bg-egg-pink/50 animate-pulse-slow animation-delay-300" />
+
+                {/* Floating dot accents */}
+                <div className="absolute top-[15%] right-[12%] w-2.5 h-2.5 rounded-full bg-egg-pink/50 animate-pulse-slow" />
+                <div className="absolute top-[30%] left-[8%] w-1.5 h-1.5 rounded-full bg-egg-rose/35 animate-pulse-slow animation-delay-300" />
+                <div className="absolute bottom-[20%] right-[10%] w-2 h-2 rounded-full bg-egg-pink/40 animate-pulse-slow animation-delay-500" />
               </div>
             </div>
           </div>
