@@ -4,12 +4,12 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Link from "next/link";
 
-function useVisible(threshold = 0.15) {
-  const ref = useRef(null);
+function useVisible(threshold = 0.12) {
+  const ref  = useRef(null);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
+      ([e]) => { if (e.isIntersecting) setVisible(true); },
       { threshold }
     );
     if (ref.current) observer.observe(ref.current);
@@ -18,22 +18,23 @@ function useVisible(threshold = 0.15) {
   return [ref, visible];
 }
 
-function Section({ id, className, children }) {
+function Reveal({ children, className = "", delay = "" }) {
   const [ref, visible] = useVisible();
   return (
-    <section
-      id={id}
+    <div
       ref={ref}
-      className={`transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"} ${className}`}
+      className={`transition-all duration-700 ease-out ${delay} ${
+        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+      } ${className}`}
     >
       {children}
-    </section>
+    </div>
   );
 }
 
 function ContactForm() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState("idle"); // idle | loading | success | error
+  const [form, setForm]     = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState("idle");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,54 +45,32 @@ function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-      if (res.ok) {
-        setStatus("success");
-        setForm({ name: "", email: "", message: "" });
-      } else {
-        setStatus("error");
-      }
-    } catch {
-      setStatus("error");
-    }
+      if (res.ok) { setStatus("success"); setForm({ name: "", email: "", message: "" }); }
+      else setStatus("error");
+    } catch { setStatus("error"); }
   };
 
   const inputClass =
-    "w-full p-3 border border-egg-pink/50 rounded-lg focus:outline-none focus:border-egg-rose bg-white/70 text-egg-brown placeholder-egg-brown/40 font-crimson-text text-lg transition-colors";
+    "w-full px-4 py-3.5 rounded-xl border border-egg-muted/60 bg-white/80 text-egg-brown placeholder-egg-brown/35 font-crimson-text text-lg focus:outline-none focus:ring-2 focus:ring-egg-pink/40 focus:border-egg-pink transition-all duration-200";
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
-      <input
-        type="text"
-        placeholder="お名前 *"
-        required
-        value={form.name}
-        onChange={(e) => setForm({ ...form, name: e.target.value })}
-        className={inputClass}
-      />
-      <input
-        type="email"
-        placeholder="メールアドレス *"
-        required
-        value={form.email}
-        onChange={(e) => setForm({ ...form, email: e.target.value })}
-        className={inputClass}
-      />
-      <textarea
-        placeholder="お問い合わせ内容 *"
-        required
-        rows={5}
-        value={form.message}
-        onChange={(e) => setForm({ ...form, message: e.target.value })}
-        className={inputClass}
-      />
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="grid md:grid-cols-2 gap-4">
+        <input type="text"  placeholder="お名前 *" required value={form.name}
+          onChange={(e) => setForm({ ...form, name: e.target.value })} className={inputClass} />
+        <input type="email" placeholder="メールアドレス *" required value={form.email}
+          onChange={(e) => setForm({ ...form, email: e.target.value })} className={inputClass} />
+      </div>
+      <textarea placeholder="お問い合わせ内容 *" required rows={5} value={form.message}
+        onChange={(e) => setForm({ ...form, message: e.target.value })} className={inputClass} />
 
       {status === "success" && (
-        <p className="text-green-600 font-crimson-text text-center">
+        <p className="text-center font-crimson-text text-green-600">
           送信が完了しました。ありがとうございます。
         </p>
       )}
       {status === "error" && (
-        <p className="text-red-500 font-crimson-text text-center">
+        <p className="text-center font-crimson-text text-red-500">
           送信に失敗しました。時間をおいてお試しください。
         </p>
       )}
@@ -99,7 +78,7 @@ function ContactForm() {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="w-full bg-egg-pink text-white py-3 rounded-lg hover:bg-egg-rose transition-colors font-cormorant text-xl tracking-wide disabled:opacity-60"
+        className="w-full bg-gradient-to-r from-egg-pink to-egg-rose text-white py-4 rounded-xl font-cormorant text-xl tracking-wide hover:opacity-90 transition-opacity disabled:opacity-50 shadow-egg-sm"
       >
         {status === "loading" ? "送信中..." : "Send Message"}
       </button>
@@ -109,26 +88,41 @@ function ContactForm() {
 
 const businessCards = [
   {
+    num: "01",
     icon: "fa-store",
-    title: "EC運営管理",
-    description:
-      "Amazon・メルカリで展開中。ブランドストーリーに寄り添った出品・運営サポートを提供します。",
+    title: "EC 運営管理",
+    en: "E-Commerce",
+    description: "Amazon・メルカリを中心にブランドストーリーに寄り添った商品展開・運営サポートを提供します。",
     href: "/ec-management",
+    accent: "from-orange-400/10 to-yellow-300/10",
   },
   {
-    icon: "fa-flask",
+    num: "02",
+    icon: "fa-wind",
     title: "調香 / 香料販売",
-    description:
-      "オリジナル調香から厳選香料の販売まで。電子書籍・オンライン教室も順次展開予定。",
+    en: "Fragrance",
+    description: "オリジナル調香から厳選香料の販売まで。電子書籍・オンライン教室も順次展開予定。",
     href: "/fragrance",
+    accent: "from-rose-300/10 to-pink-200/10",
   },
   {
+    num: "03",
     icon: "fa-laptop-code",
     title: "DX コンサルティング",
-    description:
-      "外資大手クラウド〜スタートアップ経験のあるコンサルタントが業務改善をお手伝い。自社プロダクト TENKU も提供中。",
+    en: "Digital Transformation",
+    description: "外資大手クラウド〜スタートアップ経験のあるコンサルタントが業務改善をお手伝い。自社プロダクト TENKU-AI も提供中。",
     href: "/dx-consulting",
+    accent: "from-sky-400/10 to-blue-300/10",
     highlight: true,
+  },
+  {
+    num: "04",
+    icon: "fa-leaf",
+    title: "和菓子イベント",
+    en: "Wagashi",
+    description: "苺大福をはじめとする和菓子のイベント出展・運営。季節を彩る手作りの甘みをお届けします。",
+    href: "/wagashi",
+    accent: "from-pink-300/10 to-rose-200/10",
   },
 ];
 
@@ -138,146 +132,287 @@ export default function HomePage() {
       <Header />
 
       {/* ── Hero ── */}
-      <section className="pt-28 md:pt-36 pb-20 px-6 overflow-hidden">
-        <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
-          <div className="md:w-1/2 animate-fade-up">
-            <p className="text-egg-pink font-crimson-text tracking-widest mb-3 text-sm">
-              ALL STARTS WITH EGGS
-            </p>
-            <h1 className="text-5xl md:text-7xl font-cormorant text-egg-rose leading-tight mb-6">
-              Welcome<br />to egg
-            </h1>
-            <p className="font-crimson-text text-egg-brown text-xl leading-relaxed max-w-md">
-              EC・フレグランス・DXの３軸で、<br />
-              ビジネスの可能性を広げます。
-            </p>
-            <div className="mt-8 flex gap-4">
-              <a
-                href="#business"
-                className="inline-block bg-egg-pink text-white font-cormorant text-lg px-7 py-3 rounded-full hover:bg-egg-rose transition-colors"
-              >
-                Our Business
-              </a>
-              <Link
-                href="/dx-consulting"
-                className="inline-block border border-egg-pink text-egg-rose font-cormorant text-lg px-7 py-3 rounded-full hover:bg-egg-pink hover:text-white transition-colors"
-              >
-                TENKU →
-              </Link>
-            </div>
-          </div>
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        {/* Background layers */}
+        <div className="absolute inset-0 bg-gradient-to-br from-egg-cream via-egg-light to-egg-blush" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_20%,rgba(212,165,165,0.18),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_10%_80%,rgba(248,225,225,0.25),transparent_50%)]" />
 
-          <div className="md:w-1/2 flex justify-center">
-            <div className="relative">
-              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-egg-pink/20 to-[#FFE5E5]/40 flex items-center justify-center animate-float">
-                <div className="w-48 h-48 md:w-60 md:h-60 rounded-full bg-gradient-to-br from-white to-egg-pink/30 flex items-center justify-center shadow-lg">
-                  <span className="font-cormorant text-egg-rose text-7xl md:text-8xl leading-none select-none">
-                    e
-                  </span>
-                </div>
+        {/* Decorative egg silhouettes */}
+        <div
+          className="absolute top-12 right-[3%] w-[560px] h-[680px] border border-egg-pink/8 pointer-events-none"
+          style={{ borderRadius: "50% 50% 42% 42% / 55% 55% 45% 45%" }}
+        />
+        <div
+          className="absolute top-24 right-[6%] w-[420px] h-[520px] border border-egg-pink/10 pointer-events-none"
+          style={{ borderRadius: "50% 50% 42% 42% / 55% 55% 45% 45%" }}
+        />
+
+        <div className="container mx-auto px-6 relative z-10 pt-24 pb-16">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-6">
+
+            {/* Text side */}
+            <div className="md:w-[55%] animate-fade-up">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="h-px w-10 bg-egg-pink" />
+                <p className="font-crimson-text text-egg-pink tracking-[0.3em] text-xs uppercase">
+                  All Starts With Eggs
+                </p>
               </div>
-              {/* 装飾ドット */}
-              <div className="absolute -top-3 -right-3 w-5 h-5 rounded-full bg-egg-pink/40" />
-              <div className="absolute bottom-4 -left-6 w-3 h-3 rounded-full bg-egg-rose/30" />
+
+              <h1 className="font-cormorant text-[clamp(4rem,10vw,8rem)] leading-[0.9] text-egg-rose mb-2 tracking-tight">
+                Welcome
+              </h1>
+              <h1 className="font-cormorant text-[clamp(4rem,10vw,8rem)] leading-[0.9] text-egg-rose mb-8 tracking-tight italic">
+                to egg
+              </h1>
+
+              <p className="font-crimson-text text-egg-brown text-xl leading-relaxed max-w-md mb-10">
+                EC・フレグランス・DX・和菓子。<br />
+                4つの軸で、ビジネスと文化の可能性を広げます。
+              </p>
+
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href="#business"
+                  className="inline-flex items-center gap-2 bg-egg-rose text-white font-cormorant text-lg px-7 py-3.5 rounded-full hover:bg-egg-pink transition-colors shadow-egg-sm"
+                >
+                  Our Business
+                  <i className="fas fa-arrow-down text-sm opacity-70" />
+                </a>
+                <Link
+                  href="/dx-consulting"
+                  className="inline-flex items-center gap-2 border border-egg-pink/50 text-egg-rose font-cormorant text-lg px-7 py-3.5 rounded-full hover:bg-egg-blush transition-colors"
+                >
+                  TENKU-AI →
+                </Link>
+              </div>
+            </div>
+
+            {/* Visual side — Egg */}
+            <div className="md:w-[42%] flex justify-center">
+              <div className="relative flex items-center justify-center w-72 h-80 md:w-96 md:h-[26rem]">
+
+                {/* Outer glow orbit */}
+                <div
+                  className="absolute inset-0 animate-spin-slow opacity-30"
+                  style={{ borderRadius: "50% 50% 40% 40% / 55% 55% 45% 45%", border: "1px solid #D4A5A5" }}
+                />
+
+                {/* Shadow base — ellipse under the egg */}
+                <div
+                  className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[70%] h-5 blur-xl opacity-20"
+                  style={{ background: "#9E7676", borderRadius: "50%" }}
+                />
+
+                {/* Egg body */}
+                <div
+                  className="relative w-52 h-72 md:w-64 md:h-[22rem] animate-float shadow-egg-xl"
+                  style={{
+                    borderRadius: "50% 50% 42% 42% / 55% 55% 45% 45%",
+                    background: "linear-gradient(145deg, #fff 0%, #FFF5F5 35%, #F5E6E6 70%, #EDD8D8 100%)",
+                  }}
+                >
+                  {/* Specular highlight */}
+                  <div
+                    className="absolute top-[12%] left-[20%] w-[30%] h-[20%] opacity-70"
+                    style={{
+                      borderRadius: "50%",
+                      background: "linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 100%)",
+                      filter: "blur(4px)",
+                    }}
+                  />
+                  {/* Secondary highlight */}
+                  <div
+                    className="absolute top-[8%] left-[30%] w-[15%] h-[10%] opacity-50"
+                    style={{
+                      borderRadius: "50%",
+                      background: "rgba(255,255,255,0.9)",
+                      filter: "blur(2px)",
+                    }}
+                  />
+                  {/* Subtle color wash at base */}
+                  <div
+                    className="absolute bottom-0 left-0 right-0 h-[40%]"
+                    style={{
+                      borderRadius: "0 0 42% 42% / 0 0 45% 45%",
+                      background: "linear-gradient(to bottom, transparent, rgba(158,118,118,0.08))",
+                    }}
+                  />
+                </div>
+
+                {/* Floating dot accents */}
+                <div className="absolute top-[15%] right-[12%] w-2.5 h-2.5 rounded-full bg-egg-pink/50 animate-pulse-slow" />
+                <div className="absolute top-[30%] left-[8%] w-1.5 h-1.5 rounded-full bg-egg-rose/35 animate-pulse-slow animation-delay-300" />
+                <div className="absolute bottom-[20%] right-[10%] w-2 h-2 rounded-full bg-egg-pink/40 animate-pulse-slow animation-delay-500" />
+              </div>
             </div>
           </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
+          <p className="font-crimson-text text-egg-brown text-xs tracking-widest uppercase">Scroll</p>
+          <div className="w-px h-8 bg-egg-pink animate-pulse-slow" />
         </div>
       </section>
 
       {/* ── Business ── */}
-      <Section id="business" className="py-20 px-6">
-        <div className="container mx-auto">
-          <h2 className="text-4xl font-cormorant text-egg-rose text-center mb-14">
-            Our Business
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {businessCards.map(({ icon, title, description, href, highlight }) => (
-              <Link key={href} href={href}>
-                <div
-                  className={`
-                    group relative bg-white rounded-2xl p-8 shadow-sm
-                    hover:shadow-md transition-all duration-300 hover:-translate-y-1 h-full
-                    ${highlight ? "ring-1 ring-egg-pink/30" : ""}
-                  `}
-                >
-                  {highlight && (
-                    <span className="absolute top-4 right-4 text-xs text-egg-pink font-crimson-text border border-egg-pink/40 px-2 py-0.5 rounded-full">
-                      TENKU 提供中
-                    </span>
-                  )}
-                  <div className="w-14 h-14 mb-6 bg-egg-cream rounded-xl flex items-center justify-center group-hover:bg-egg-pink/20 transition-colors">
-                    <i className={`fas ${icon} text-egg-rose text-2xl`} />
+      <section id="business" className="py-28 px-6 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_0%_50%,rgba(212,165,165,0.06),transparent_60%)]" />
+
+        <div className="container mx-auto relative">
+          <Reveal className="text-center mb-16">
+            <p className="font-crimson-text text-egg-pink tracking-[0.3em] text-xs uppercase mb-3">What we do</p>
+            <h2 className="font-cormorant text-5xl md:text-6xl text-egg-rose">Our Business</h2>
+            <div className="mt-5 mx-auto w-16 h-px bg-gradient-to-r from-transparent via-egg-pink to-transparent" />
+          </Reveal>
+
+          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
+            {businessCards.map(({ num, icon, title, en, description, href, accent, highlight }, i) => (
+              <Reveal key={href} delay={`animation-delay-${(i + 1) * 100}`}>
+                <Link href={href} className="group block h-full">
+                  <div
+                    className={`
+                      relative h-full bg-egg-cream rounded-2xl p-7 overflow-hidden
+                      border border-egg-pink/0 hover:border-egg-pink/30
+                      shadow-egg-sm hover:shadow-egg-md
+                      transition-all duration-400 hover:-translate-y-1.5
+                      ${highlight ? "ring-1 ring-egg-pink/20" : ""}
+                    `}
+                  >
+                    {/* Gradient bg */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${accent} opacity-0 group-hover:opacity-100 transition-opacity duration-400`} />
+
+                    <div className="relative">
+                      <span className="font-cormorant text-egg-pink/30 text-6xl leading-none absolute -top-2 -right-2 select-none">
+                        {num}
+                      </span>
+
+                      <div className="w-12 h-12 mb-5 bg-white rounded-xl flex items-center justify-center shadow-egg-sm group-hover:shadow-egg-md transition-shadow">
+                        <i className={`fas ${icon} text-egg-rose text-lg`} />
+                      </div>
+
+                      <p className="font-crimson-text text-egg-pink/60 text-xs tracking-widest uppercase mb-1">{en}</p>
+                      <h3 className="font-cormorant text-2xl text-egg-rose mb-3 leading-tight">{title}</h3>
+                      <p className="font-noto text-egg-brown/80 text-sm leading-relaxed">{description}</p>
+
+                      <div className="mt-5 flex items-center gap-1 text-egg-pink font-crimson-text text-sm group-hover:gap-2 transition-all">
+                        詳しく見る
+                        <i className="fas fa-arrow-right text-xs" />
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-cormorant text-egg-rose mb-3">{title}</h3>
-                  <p className="font-crimson-text text-egg-brown leading-relaxed text-lg">
-                    {description}
-                  </p>
-                  <div className="mt-5 text-egg-pink font-crimson-text text-sm group-hover:translate-x-1 transition-transform inline-block">
-                    詳しく見る →
-                  </div>
-                </div>
-              </Link>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </div>
-      </Section>
+      </section>
 
       {/* ── About ── */}
-      <Section id="about" className="py-20 px-6 bg-white">
-        <div className="container mx-auto max-w-3xl text-center">
-          <h2 className="text-4xl font-cormorant text-egg-rose mb-8">About egg</h2>
-          <p className="font-crimson-text text-egg-brown text-xl leading-loose mb-6">
-            株式会社eggは、フレグランス・ECビジネス・デジタルトランスフォーメーションの
-            3つの領域で事業を展開するスタートアップです。
-          </p>
-          <p className="font-crimson-text text-egg-brown/80 text-lg leading-loose">
-            外資大手パブリッククラウドやスタートアップ企業での経験を持つメンバーが、
-            各分野の専門知識を掛け合わせ、お客様のビジネスの可能性を広げるお手伝いをします。
-          </p>
-        </div>
-      </Section>
+      <section id="about" className="py-28 px-6 relative overflow-hidden bg-egg-cream">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_100%_0%,rgba(212,165,165,0.1),transparent_50%)]" />
 
-      {/* ── Contact ── */}
-      <Section id="contact" className="py-20 px-6">
-        <div className="container mx-auto max-w-lg">
-          <h2 className="text-4xl font-cormorant text-egg-rose text-center mb-3">
-            Contact Us
-          </h2>
-          <p className="font-crimson-text text-egg-brown/70 text-center mb-10">
-            お気軽にお問い合わせください
-          </p>
-          <ContactForm />
-        </div>
-      </Section>
-
-      {/* ── Company ── */}
-      <Section id="company" className="py-20 px-6 bg-white">
-        <div className="container mx-auto max-w-2xl">
-          <h2 className="text-4xl font-cormorant text-egg-rose text-center mb-12">
-            Company Profile
-          </h2>
-          <div className="divide-y divide-egg-pink/20">
-            {[
-              { label: "会社名", value: "株式会社egg" },
-              { label: "代表取締役", value: "前田 拡夢" },
-              { label: "所在地", value: "〒661-0977 兵庫県尼崎市竹谷町3丁目89-4" },
-              { label: "設立", value: "2025年" },
-              { label: "Email", value: "info@eggs.email", isEmail: true },
-            ].map(({ label, value, isEmail }) => (
-              <div key={label} className="flex flex-col sm:flex-row py-4 gap-2">
-                <span className="sm:w-36 font-cormorant text-egg-rose shrink-0">{label}</span>
-                {isEmail ? (
-                  <a href={`mailto:${value}`} className="font-crimson-text text-egg-brown hover:text-egg-rose text-lg transition-colors">
-                    {value}
-                  </a>
-                ) : (
-                  <span className="font-crimson-text text-egg-brown text-lg">{value}</span>
-                )}
+        <div className="container mx-auto max-w-6xl relative">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            {/* Text */}
+            <Reveal>
+              <p className="font-crimson-text text-egg-pink tracking-[0.3em] text-xs uppercase mb-4">Our Story</p>
+              <h2 className="font-cormorant text-5xl md:text-6xl text-egg-rose mb-8 leading-tight">
+                About<br /><span className="italic">egg</span>
+              </h2>
+              <div className="space-y-5">
+                <p className="font-noto text-egg-brown text-base leading-loose">
+                  株式会社eggは、フレグランス・ECビジネス・デジタルトランスフォーメーション・和菓子イベントの4つの領域で事業を展開するスタートアップです。
+                </p>
+                <p className="font-noto text-egg-brown/75 text-base leading-loose">
+                  外資大手パブリッククラウドやスタートアップ企業での経験を持つメンバーが、各分野の専門知識を掛け合わせ、お客様のビジネスの可能性を広げるお手伝いをします。
+                </p>
               </div>
-            ))}
+              <div className="mt-8 h-px bg-gradient-to-r from-egg-pink/40 to-transparent" />
+            </Reveal>
+
+            {/* Visual stats */}
+            <Reveal delay="animation-delay-200">
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { num: "4",      label: "事業領域",     sub: "Business Domains" },
+                  { num: "2025",   label: "設立年",       sub: "Founded" },
+                  { num: "∞",      label: "可能性",       sub: "Possibilities" },
+                  { num: "AWS",    label: "技術基盤",     sub: "Cloud Platform" },
+                ].map(({ num, label, sub }) => (
+                  <div key={label} className="bg-white rounded-2xl p-6 shadow-egg-sm hover:shadow-egg-md transition-shadow">
+                    <p className="font-cormorant text-4xl text-egg-rose mb-1">{num}</p>
+                    <p className="font-noto text-egg-brown text-sm font-medium">{label}</p>
+                    <p className="font-crimson-text text-egg-pink/60 text-xs tracking-wide">{sub}</p>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
           </div>
         </div>
-      </Section>
+      </section>
+
+      {/* ── Contact ── */}
+      <section id="contact" className="py-28 px-6 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_100%,rgba(212,165,165,0.1),transparent_60%)]" />
+
+        <div className="container mx-auto max-w-2xl relative">
+          <Reveal className="text-center mb-12">
+            <p className="font-crimson-text text-egg-pink tracking-[0.3em] text-xs uppercase mb-3">Get in Touch</p>
+            <h2 className="font-cormorant text-5xl md:text-6xl text-egg-rose mb-4">Contact Us</h2>
+            <p className="font-noto text-egg-brown/70 text-sm">お気軽にお問い合わせください</p>
+          </Reveal>
+          <Reveal delay="animation-delay-200">
+            <div className="bg-egg-cream rounded-3xl p-8 md:p-10 shadow-egg-md">
+              <ContactForm />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ── Company ── */}
+      <section id="company" className="py-28 px-6 bg-egg-cream relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_0%_100%,rgba(212,165,165,0.08),transparent_50%)]" />
+
+        <div className="container mx-auto max-w-3xl relative">
+          <Reveal className="text-center mb-14">
+            <p className="font-crimson-text text-egg-pink tracking-[0.3em] text-xs uppercase mb-3">Who We Are</p>
+            <h2 className="font-cormorant text-5xl md:text-6xl text-egg-rose">Company Profile</h2>
+          </Reveal>
+
+          <Reveal delay="animation-delay-200">
+            <div className="bg-white rounded-3xl overflow-hidden shadow-egg-md">
+              {[
+                { label: "会社名",    value: "株式会社egg" },
+                { label: "代表取締役", value: "前田 拡夢" },
+                { label: "所在地",    value: "〒661-0977 兵庫県尼崎市竹谷町3丁目89-4" },
+                { label: "設立",      value: "2025年" },
+                { label: "Email",     value: "info@eggs.email", isEmail: true },
+              ].map(({ label, value, isEmail }, i) => (
+                <div
+                  key={label}
+                  className={`flex flex-col sm:flex-row py-5 px-8 gap-3 items-start sm:items-center ${
+                    i !== 0 ? "border-t border-egg-blush" : ""
+                  }`}
+                >
+                  <span className="sm:w-36 font-cormorant text-egg-pink/70 text-sm tracking-widest uppercase shrink-0">
+                    {label}
+                  </span>
+                  {isEmail ? (
+                    <a href={`mailto:${value}`} className="font-crimson-text text-egg-rose hover:text-egg-pink text-lg transition-colors">
+                      {value}
+                    </a>
+                  ) : (
+                    <span className="font-noto text-egg-brown text-base">{value}</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
 
       <Footer />
     </div>
