@@ -37,14 +37,17 @@ module.exports = {
         'egg-grain': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E\")",
       },
       animation: {
-        'float':        'float 5s ease-in-out infinite',
-        'fade-up':      'fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) both',
-        'fade-in':      'fadeIn 0.6s ease-out both',
-        'slide-right':  'slideRight 0.8s cubic-bezier(0.22,1,0.36,1) both',
-        'draw-line':    'drawLine 1.2s ease-out both',
-        'pulse-slow':   'pulse 4s ease-in-out infinite',
-        'spin-slow':    'spin 20s linear infinite',
-        'shimmer':      'shimmer 2s linear infinite',
+        'float':           'float 5s ease-in-out infinite',
+        'fade-up':         'fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) both',
+        'fade-in':         'fadeIn 0.6s ease-out both',
+        'slide-right':     'slideRight 0.8s cubic-bezier(0.22,1,0.36,1) both',
+        'draw-line':       'drawLine 1.2s ease-out both',
+        'pulse-slow':      'pulse 4s ease-in-out infinite',
+        'spin-slow':       'spin 20s linear infinite',
+        'shimmer':         'shimmer 2s linear infinite',
+        'marquee':         'marquee 28s linear infinite',
+        'marquee-reverse': 'marquee-reverse 32s linear infinite',
+        'loading-bar':     'loadingBar 1.8s cubic-bezier(0.4,0,0.2,1) forwards',
       },
       keyframes: {
         float: {
@@ -71,6 +74,19 @@ module.exports = {
         shimmer: {
           '0%':   { backgroundPosition: '-200% center' },
           '100%': { backgroundPosition: '200% center' },
+        },
+        marquee: {
+          '0%':   { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        'marquee-reverse': {
+          '0%':   { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(0%)' },
+        },
+        loadingBar: {
+          '0%':   { width: '0%', opacity: '1' },
+          '80%':  { width: '100%', opacity: '1' },
+          '100%': { width: '100%', opacity: '0' },
         },
       },
       boxShadow: {

@@ -5,7 +5,7 @@ import Link from "next/link";
 const navLinks = [
   { href: "/#business",      label: "Business" },
   { href: "/dx-consulting",  label: "DX / TENKU" },
-  { href: "/wagashi",        label: "Wagashi" },
+  { href: "/fragrance",      label: "Fragrance" },
   { href: "/#company",       label: "Company" },
   { href: "/#contact",       label: "Contact" },
 ];
