@@ -28,19 +28,19 @@ export const portfolioItems = [
     slug: "wholesale-system-renewal",
     type: "case-study",
     featured: false,
-    title: "Webシステム刷新プロジェクト",
-    tagline: "卸売業企業向け統合管理システム",
+    title: "Webシステムリニューアルプロジェクト",
+    tagline: "卸売業企業向け統合管理システムの現代化",
     description:
       "卸売業の受発注・在庫・請求管理をクラウドネイティブ構成にリニューアル。" +
       "Next.js 15 × AWS Lambda × RDS (PostgreSQL) でサーバーレスアーキテクチャを採用し、" +
-      "業務の自動化と可視化を実現しました。Amplify によるホスティングで DevOps も刷新。",
-    thumbnail: null,
-    tags: ["Next.js 15", "AWS Lambda", "Amazon RDS", "PostgreSQL", "Amplify", "TypeScript", "サーバーレス"],
+      "業務の自動化と可視化を実現。Amplify によるホスティングで DevOps も刷新しました。",
+    thumbnail: "/images/portfolio/case-wholesale-thumb.png",
+    tags: ["Next.js 15", "AWS Lambda", "Amazon RDS", "PostgreSQL", "AWS S3", "CloudFront", "Amazon SES", "JWT認証"],
     results: [
-      "受発注処理の自動化・ペーパーレス化",
-      "在庫データのリアルタイム可視化",
-      "システム運用コスト大幅削減",
-      "Amplify CI/CD による開発速度向上",
+      "発注グループ化により承認・キャンセル・メール送信を一元管理",
+      "日時フォーマット統一（formatDateJP）でUI一貫性を向上",
+      "管理者画面のグループ化で承認業務効率化",
+      "メール署名自動切替（4グループ対応）で運用効率化",
     ],
     screenshots: [],
   },
@@ -49,19 +49,40 @@ export const portfolioItems = [
     slug: "store-management-system",
     type: "case-study",
     featured: false,
-    title: "店舗管理統合システム",
-    tagline: "勤怠・レジ・売上管理の一元化",
+    title: "店舗勤怠・レジ・売上管理システム",
+    tagline: "小規模店舗向けの総合管理ソリューション",
     description:
-      "複数店舗の勤怠打刻・POSレジ・売上データをリアルタイムに一元管理するシステムを構築。" +
+      "複数店舗の勤怠打刻・POSレジ（写真証跡付き）・売上データをリアルタイムに一元管理。" +
       "Supabase をバックエンドに据えたモバイルファーストの設計で、" +
-      "現場スタッフがスマートフォンから直感的に操作できる UX を実現しました。",
-    thumbnail: null,
-    tags: ["Supabase", "Next.js", "TypeScript", "モバイル対応", "リアルタイム DB", "PWA"],
+      "スマートフォンから直感的に操作できる UX を実現しました。",
+    thumbnail: "/images/portfolio/case-store-thumb.jpg",
+    tags: ["Supabase", "Next.js", "TypeScript", "モバイル対応", "リアルタイム DB", "PWA", "CSV出力"],
     results: [
-      "勤怠管理の完全デジタル化",
-      "売上データのリアルタイム集計・可視化",
-      "複数店舗間のデータ共有・比較分析",
-      "スマートフォン対応でペーパーレス運用",
+      "勤怠打刻・勤務時間の自動集計（15分単位）でペーパーレス化",
+      "レジ開閉に写真証跡を必須化し、現金管理の透明性を確保",
+      "日次・月次売上をリアルタイム集計・グラフ化",
+      "CSV出力対応で既存業務フローとシームレスに連携",
+    ],
+    screenshots: [],
+  },
+
+  {
+    slug: "saiji-management-saas",
+    type: "case-study",
+    featured: false,
+    title: "催事販売管理 マルチテナント SaaS",
+    tagline: "催事の"裏方情報"をチームの資産に変える、売上ガバナンス付き管理プラットフォーム",
+    description:
+      "催事会場ごとの搬入ルール・現金規定・ゴミ出し情報を構造化データとして蓄積し組織ナレッジ化。" +
+      "日次売上の未入力を Cron で自動検知し AWS SES で督促通知するガバナンス機能を実装。" +
+      "Next.js 14 × Vercel × Supabase (PostgreSQL) のマルチテナント SaaS として本番稼働中です。",
+    thumbnail: "/images/portfolio/case-saiji-thumb.png",
+    tags: ["Next.js 14", "Vercel", "Supabase", "Prisma ORM v5", "AWS SES", "Google Sheets", "マルチテナント", "Cron"],
+    results: [
+      "会場ノウハウをメモ・添付ファイルでデータ化し、組織資産として再利用可能に",
+      "21時締め・未入力を Cron 自動検知 → SES で代理店・管理者に即時通知",
+      "売上データを Google Sheets へ 15 分間隔で自動同期",
+      "SuperAdmin / Admin / Agent の RBAC で権限とテナントを完全分離",
     ],
     screenshots: [],
   },
