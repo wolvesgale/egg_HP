@@ -71,7 +71,7 @@ export const portfolioItems = [
     type: "case-study",
     featured: false,
     title: "催事販売管理 マルチテナント SaaS",
-    tagline: "催事の"裏方情報"をチームの資産に変える、売上ガバナンス付き管理プラットフォーム",
+    tagline: "催事の「裏方情報」をチームの資産に変える、売上ガバナンス付き管理プラットフォーム",
     description:
       "催事会場ごとの搬入ルール・現金規定・ゴミ出し情報を構造化データとして蓄積し組織ナレッジ化。" +
       "日次売上の未入力を Cron で自動検知し AWS SES で督促通知するガバナンス機能を実装。" +
