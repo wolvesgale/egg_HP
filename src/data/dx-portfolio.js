@@ -96,7 +96,7 @@ export const portfolioItems = [
     description:
       "大福・団子・饅頭のカスタマイズレシピをAIがリアルタイムWeb検索で旬のトレンドを取り込みながらランダムに生成。" +
       "生成したレシピを永久保存・蓄積できる仕組みを備え、初日無料・年額¥100の手軽な価格設定で提供するWebサービスです。",
-    thumbnail: null,
+    thumbnail: "/images/case-wagashi-atelier-thumb.png",
     externalUrl: "https://wagashi-atelier.vercel.app/",
     tags: ["Next.js", "AI", "Webリアルタイム検索", "Vercel", "レシピ生成"],
     results: [
