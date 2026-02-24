@@ -95,10 +95,10 @@ function LoadingScreen({ onDone }) {
    Marquee (infinite scroll ticker)
 ───────────────────────────────────────────── */
 const TICKER_ITEMS = [
-  "EC 運営管理", "Fragrance", "DX コンサルティング", "TENKU-AI",
-  "Amazon", "調香 / 香料販売", "Cloud", "フレグランス事業",
-  "EC 運営管理", "Fragrance", "DX コンサルティング", "TENKU-AI",
-  "Amazon", "調香 / 香料販売", "Cloud", "フレグランス事業",
+  "EC 運営管理", "DX コンサルティング", "TENKU-AI",
+  "Amazon", "Cloud", "和菓子イベント",
+  "EC 運営管理", "DX コンサルティング", "TENKU-AI",
+  "Amazon", "Cloud", "和菓子イベント",
 ];
 
 function Marquee({ reverse = false }) {
@@ -194,15 +194,6 @@ const businessCards = [
   },
   {
     num: "02",
-    icon: "fa-wind",
-    title: "調香 / 香料販売",
-    en: "Fragrance",
-    description: "オリジナル調香から厳選香料の販売まで。電子書籍・オンライン教室も順次展開予定。",
-    href: "/fragrance",
-    accent: "from-rose-300/10 to-pink-200/10",
-  },
-  {
-    num: "03",
     icon: "fa-laptop-code",
     title: "DX コンサルティング",
     en: "Digital Transformation",
@@ -212,7 +203,7 @@ const businessCards = [
     highlight: true,
   },
   {
-    num: "04",
+    num: "03",
     icon: "fa-leaf",
     title: "和菓子イベント",
     en: "Wagashi",
@@ -289,8 +280,8 @@ export default function HomePage() {
                 </h1>
 
                 <p className="font-crimson-text text-egg-brown text-xl leading-relaxed max-w-md mb-10">
-                  EC・フレグランス・DX・和菓子。<br />
-                  4つの軸で、ビジネスと文化の可能性を広げます。
+                  EC・DX・和菓子。<br />
+                  3つの軸で、ビジネスと文化の可能性を広げます。
                 </p>
 
                 <div className="flex flex-wrap gap-3">
@@ -455,7 +446,7 @@ export default function HomePage() {
                 </h2>
                 <div className="space-y-5">
                   <p className="font-noto text-egg-brown text-base leading-loose">
-                    株式会社eggは、フレグランス・ECビジネス・デジタルトランスフォーメーション・和菓子イベントの4つの領域で事業を展開するスタートアップです。
+                    株式会社eggは、ECビジネス・デジタルトランスフォーメーション・和菓子イベントの3つの領域で事業を展開するスタートアップです。
                   </p>
                   <p className="font-noto text-egg-brown/75 text-base leading-loose">
                     外資大手パブリッククラウドやスタートアップ企業での経験を持つメンバーが、各分野の専門知識を掛け合わせ、お客様のビジネスの可能性を広げるお手伝いをします。
@@ -468,7 +459,7 @@ export default function HomePage() {
               <Reveal delay="animation-delay-200">
                 <div className="grid grid-cols-2 gap-4">
                   {[
-                    { num: "4",      label: "事業領域",     sub: "Business Domains" },
+                    { num: "3",      label: "事業領域",     sub: "Business Domains" },
                     { num: "2025",   label: "設立年",       sub: "Founded" },
                     { num: "∞",      label: "可能性",       sub: "Possibilities" },
                     { num: "AWS",    label: "技術基盤",     sub: "Cloud Platform" },
