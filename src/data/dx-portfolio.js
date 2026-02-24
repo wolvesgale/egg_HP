@@ -86,6 +86,25 @@ export const portfolioItems = [
     ],
     screenshots: [],
   },
+
+  {
+    slug: "wagashi-atelier",
+    type: "case-study",
+    featured: false,
+    title: "和菓子アトリエ — 秘伝のレシピ帖",
+    tagline: "AIとWeb検索で毎回異なるカスタマイズレシピを生成する、和菓子特化のレシピSaaS",
+    description:
+      "大福・団子・饅頭のカスタマイズレシピをAIがリアルタイムWeb検索で旬のトレンドを取り込みながらランダムに生成。" +
+      "生成したレシピを永久保存・蓄積できる仕組みを備え、初日無料・年額¥100の手軽な価格設定で提供するWebサービスです。",
+    thumbnail: null,
+    externalUrl: "https://wagashi-atelier.vercel.app/",
+    tags: ["Next.js", "AI", "Webリアルタイム検索", "Vercel", "レシピ生成"],
+    results: [
+      "AIリアルタイムWeb検索で旬の素材を反映したレシピを毎回自動生成",
+      "生成レシピを永久保存・蓄積し、和菓子ノウハウをデータ資産化",
+    ],
+    screenshots: [],
+  },
 ];
 
 export function getPortfolioItem(slug) {

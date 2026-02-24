@@ -221,10 +221,9 @@ export default function DxConsultingPage() {
 
           {cases.length > 0 ? (
             <div className="grid md:grid-cols-2 gap-5">
-              {cases.map((item, i) => (
-                <Reveal key={item.slug} delay={`animation-delay-${(i + 1) * 100}`}>
-                  <Link href={`/dx-consulting/${item.slug}`}>
-                    <div className="group rounded-xl overflow-hidden bg-aws-card hover:bg-[#354a60] transition-all duration-300 border border-white/5 hover:border-aws-orange/20 hover:-translate-y-1 h-full">
+              {cases.map((item, i) => {
+                const cardInner = (
+                  <div className="group rounded-xl overflow-hidden bg-aws-card hover:bg-[#354a60] transition-all duration-300 border border-white/5 hover:border-aws-orange/20 hover:-translate-y-1 h-full">
                       {/* Thumbnail */}
                       <div className="aspect-video bg-aws-darker flex items-center justify-center relative overflow-hidden">
                         {item.thumbnail ? (
@@ -264,9 +263,17 @@ export default function DxConsultingPage() {
                         )}
                       </div>
                     </div>
-                  </Link>
+                );
+                return (
+                <Reveal key={item.slug} delay={`animation-delay-${(i + 1) * 100}`}>
+                  {item.externalUrl ? (
+                    <a href={item.externalUrl} target="_blank" rel="noopener noreferrer">{cardInner}</a>
+                  ) : (
+                    <Link href={`/dx-consulting/${item.slug}`}>{cardInner}</Link>
+                  )}
                 </Reveal>
-              ))}
+                );
+              })}
             </div>
           ) : (
             <div className="text-center py-24 border border-dashed border-white/8 rounded-2xl">
