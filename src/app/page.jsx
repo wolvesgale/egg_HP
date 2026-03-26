@@ -282,6 +282,23 @@ const portfolioItems = [
     title: "苺大福 × ポップアップ出展",
     description: "季節の和菓子をテーマにしたイベント企画・運営。来場者との直接接点でブランド体験を創出。",
   },
+  {
+    id: "07",
+    thumb: null,
+    thumbGradient: "from-green-200 via-emerald-100 to-teal-50",
+    thumbIcon: "fa-file-invoice",
+    category: "DX / AI SaaS",
+    title: "HojoAI — 補助金申請書AI自動生成",
+    description: "AIが補助金申請書を自動生成し、採択率の高い申請書を数分で作成できるSaaS。Gemini × Next.js × Clerk構成で、サンプルPDFプレビューやX自動投稿機能も搭載。",
+  {
+    id: "07",
+    thumb: null,
+    thumbGradient: "from-green-200 via-emerald-100 to-teal-50",
+    thumbIcon: "fa-file-invoice",
+    category: "DX / AI SaaS",
+    title: "HojoAI — 補助金申請書AI自動生成",
+    description: "AIが補助金申請書を自動生成し、採択率の高い申請書を数分で作成できるSaaS。Gemini × Next.js × Clerk構成で、サンプルPDFプレビューやX自動投稿機能も搭載。",
+  },
 ];
 
 /* ─────────────────────────────────────────────
@@ -664,6 +681,7 @@ export default function HomePage() {
                   { label: "代表取締役", value: "前田 拡夢" },
                   { label: "所在地",    value: "〒661-0977 兵庫県尼崎市竹谷町3丁目89-4" },
                   { label: "設立",      value: "2025年" },
+                  { label: "法人番号",  value: "7140001138678" },
                   { label: "Email",     value: "info@eggs.email", isEmail: true },
                 ].map(({ label, value, isEmail }, i) => (
                   <div
