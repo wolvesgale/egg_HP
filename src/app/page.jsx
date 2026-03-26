@@ -290,14 +290,6 @@ const portfolioItems = [
     category: "DX / AI SaaS",
     title: "HojoAI — 補助金申請書AI自動生成",
     description: "AIが補助金申請書を自動生成し、採択率の高い申請書を数分で作成できるSaaS。Gemini × Next.js × Clerk構成で、サンプルPDFプレビューやX自動投稿機能も搭載。",
-  {
-    id: "07",
-    thumb: null,
-    thumbGradient: "from-green-200 via-emerald-100 to-teal-50",
-    thumbIcon: "fa-file-invoice",
-    category: "DX / AI SaaS",
-    title: "HojoAI — 補助金申請書AI自動生成",
-    description: "AIが補助金申請書を自動生成し、採択率の高い申請書を数分で作成できるSaaS。Gemini × Next.js × Clerk構成で、サンプルPDFプレビューやX自動投稿機能も搭載。",
   },
 ];
 
