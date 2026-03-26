@@ -65,6 +65,27 @@ export const portfolioItems = [
     ],
     screenshots: [],
   },
+  {
+    slug: "hojo-ai",
+    type: "case-study",
+    featured: false,
+    title: "HojoAI",
+    tagline: "補助金申請書をAIが自動生成",
+    description:
+      "AIが補助金申請書を自動生成し、採択率の高い申請書を数分で作成できるSaaS。" +
+      "Gemini 2.5 Flash × Next.js × Clerk構成で、サンプルPDFプレビューやX自動投稿機能も搭載。" +
+      "FreeプランからProプランまでのフリーミアム構成。",
+    thumbnail: null,
+    tags: ["Next.js", "Gemini AI", "Clerk", "Vercel", "Stripe", "SaaS"],
+    links: { demo: "https://hojyokin-saas-wolvesgales-projects.vercel.app/" },
+    results: [
+      "補助金申請書をAIが数分で自動生成",
+      "サンプルPDFプレビュー機能搭載",
+      "X（Twitter）自動投稿機能",
+      "フリーミアムプラン構成",
+    ],
+    screenshots: [],
+  },
 ];
 
 export function getPortfolioItem(slug) {
