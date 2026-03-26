@@ -679,7 +679,7 @@ export default function HomePage() {
                 {[
                   { label: "会社名",    value: "株式会社egg" },
                   { label: "代表取締役", value: "前田 拡夢" },
-                  { label: "所在地",    value: "〒661-0977 兵庫県尼崎市竹谷町3丁目89-4" },
+                  { label: "所在地",    value: "〒660-0876 兵庫県尼崎市竹谷町3丁目89-4" },
                   { label: "設立",      value: "2025年" },
                   { label: "法人番号",  value: "7140001138678" },
                   { label: "Email",     value: "info@eggs.email", isEmail: true },
