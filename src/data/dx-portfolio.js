@@ -16,13 +16,13 @@ export const portfolioItems = [
     thumbnail: null,
     tags: ["SaaS", "AWS", "技能実習 TITP", "特定技能 SSW", "特定活動 TA", "AI Agent", "在留資格管理"],
     links: {
-      demo:     "TENKU_DEMO_URL",
+      demo: "TENKU_DEMO_URL",
       purchase: "TENKU_PURCHASE_URL",
-      signup:   "TENKU_SIGNUP_URL",
+      signup: "TENKU_SIGNUP_URL",
     },
   },
 
-  // ── 案件実績 ──────────────────────────────────────────────────────────────
+  // ── 案件実績 ──────────────────────────────────────────────────────
 
   {
     slug: "wholesale-system-renewal",
@@ -33,8 +33,8 @@ export const portfolioItems = [
     description:
       "卸売業の受発注・在庫・請求管理をクラウドネイティブ構成にリニューアル。" +
       "Next.js 15 × AWS Lambda × RDS (PostgreSQL) でサーバーレスアーキテクチャを採用し、" +
-      "業務の自動化と可視化を実現しました。Amplify によるホスティングで DevOps も刷新。",
-    thumbnail: null,
+      "業務の自動化と可視化を実現しました。Amplify による DevOps も刷新。",
+    thumbnail: "/images/case-wholesale-thumb.png",
     tags: ["Next.js 15", "AWS Lambda", "Amazon RDS", "PostgreSQL", "Amplify", "TypeScript", "サーバーレス"],
     results: [
       "受発注処理の自動化・ペーパーレス化",
@@ -55,7 +55,7 @@ export const portfolioItems = [
       "複数店舗の勤怠打刻・POSレジ・売上データをリアルタイムに一元管理するシステムを構築。" +
       "Supabase をバックエンドに据えたモバイルファーストの設計で、" +
       "現場スタッフがスマートフォンから直感的に操作できる UX を実現しました。",
-    thumbnail: null,
+    thumbnail: "/images/case-store-thumb.png",
     tags: ["Supabase", "Next.js", "TypeScript", "モバイル対応", "リアルタイム DB", "PWA"],
     results: [
       "勤怠管理の完全デジタル化",
@@ -65,28 +65,49 @@ export const portfolioItems = [
     ],
     screenshots: [],
   },
+
   {
-    slug: "cardvoice",
+    slug: "inventory-field-maintenance",
     type: "case-study",
     featured: false,
-    title: "CardVoice",
-    tagline: "撮って、話して、つながる名刺管理アプリ",
+    title: "在庫棚卸管理システム",
+    tagline: "入出庫・棚卸・月次レポートをWebで一元管理",
     description:
-      "名刺をカメラで撮影するだけでOCRが情報を自動読み取り、音声メモで印象や会話内容をその場で記録。" +
-      "AIが名刺データを自動整理し、検索・分類を効率化します。" +
-      "Next.js × Supabase × Anthropic API × Stripe によるフリーミアム構成で、" +
-      "PersonalプランとTeamプランの2段階で提供するモバイルファーストのSaaSです。",
-    thumbnail: "/images/case-cardvoice-thumb.png",
-    tags: ["Next.js", "Supabase", "Anthropic API", "Stripe", "Vercel", "OCR", "音声入力", "SaaS"],
-    links: { demo: "https://cardvoice.vercel.app/" },
+      "在庫の入出庫登録・棚卸・在庫台帳・月次レポートを一元管理するWebシステム。" +
+      "マネージャー承認フローや在庫台帳のリアルタイム更新を実装し、" +
+      "現場担当者からマネージャーまで使いやすいUI設計を実現しました。",
+    thumbnail: "/images/case-inventory-thumb.png",
+    tags: ["Next.js", "PostgreSQL", "TypeScript", "承認フロー", "在庫管理"],
     results: [
-      "カメラ撮影 → OCR による名刺情報の自動入力",
-      "音声メモでリアルタイムに会話内容を記録",
-      "AIによる自動タグ付け・分類・検索",
-      "PersonalプランとTeamプランのフリーミアム構成",
+      "入出庫登録・承認フローのデジタル化",
+      "在庫台帳のリアルタイム可視化",
+      "月次棚卸・レポート自動生成",
+      "マネージャー承認画面で業務効率化",
     ],
     screenshots: [],
   },
+
+  {
+    slug: "saiya",
+    type: "case-study",
+    featured: false,
+    title: "イベント・売上管理システム",
+    tagline: "代理店・会場・仲介を横断したイベントカレンダー管理",
+    description:
+      "イベントの代理店・会場・仲介業者・ユーザーを統合管理するダークテーマのWebシステム。" +
+      "カレンダービューでのスケジュール可視化・売上管理・売上レポート機能を備え、" +
+      "複雑な関係者構造をシンプルなUIで管理できます。",
+    thumbnail: "/images/case-saiya-thumb.png",
+    tags: ["Next.js", "PostgreSQL", "TypeScript", "カレンダー", "売上管理", "ダークUI"],
+    results: [
+      "代理店・会場・仲介を横断した一元管理",
+      "カレンダービューでのスケジュール可視化",
+      "売上データのリアルタイム集計・レポート",
+      "複雑な関係者構造をシンプルに管理",
+    ],
+    screenshots: [],
+  },
+
   {
     slug: "wagashi-atelier",
     type: "case-study",
@@ -107,27 +128,7 @@ export const portfolioItems = [
     ],
     screenshots: [],
   },
-  {
-    slug: "tenku-game",
-    type: "case-study",
-    featured: false,
-    title: "TENKU-GAME",
-    tagline: "未成年向け安全ゲームコミュニティプラットフォーム",
-    description:
-      "未成年者を対象とした安全なゲームコミュニティプラットフォーム。" +
-      "Steam API連携・フォロー/相互フォロー機能・DMチャンネル作成を備えた" +
-      "Next.js × Neon PostgreSQL構成のWebアプリです。",
-    thumbnail: null,
-    tags: ["Next.js", "Neon PostgreSQL", "Steam API", "Vercel", "コミュニティ"],
-    links: { demo: "https://tenku-game.vercel.app/" },
-    results: [
-      "Steam API連携によるゲーム情報取得",
-      "フォロー・相互フォロー機能",
-      "安全なDMチャンネル機能",
-      "未成年向け安全設計",
-    ],
-    screenshots: [],
-  },
+
   {
     slug: "hojo-ai",
     type: "case-study",
@@ -138,7 +139,7 @@ export const portfolioItems = [
       "AIが補助金申請書を自動生成し、採択率の高い申請書を数分で作成できるSaaS。" +
       "Gemini 2.5 Flash × Next.js × Clerk構成で、サンプルPDFプレビューやX自動投稿機能も搭載。" +
       "FreeプランからProプランまでのフリーミアム構成。",
-    thumbnail: null,
+    thumbnail: "/images/case-hojo-ai-thumb.png",
     tags: ["Next.js", "Gemini AI", "Clerk", "Vercel", "Stripe", "SaaS"],
     links: { demo: "https://hojyokin-saas-wolvesgales-projects.vercel.app/" },
     results: [
