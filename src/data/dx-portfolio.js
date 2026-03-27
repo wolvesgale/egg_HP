@@ -66,6 +66,69 @@ export const portfolioItems = [
     screenshots: [],
   },
   {
+    slug: "cardvoice",
+    type: "case-study",
+    featured: false,
+    title: "CardVoice",
+    tagline: "撮って、話して、つながる名刺管理アプリ",
+    description:
+      "名刺をカメラで撮影するだけでOCRが情報を自動読み取り、音声メモで印象や会話内容をその場で記録。" +
+      "AIが名刺データを自動整理し、検索・分類を効率化します。" +
+      "Next.js × Supabase × Anthropic API × Stripe によるフリーミアム構成で、" +
+      "PersonalプランとTeamプランの2段階で提供するモバイルファーストのSaaSです。",
+    thumbnail: "/images/case-cardvoice-thumb.png",
+    tags: ["Next.js", "Supabase", "Anthropic API", "Stripe", "Vercel", "OCR", "音声入力", "SaaS"],
+    links: { demo: "https://cardvoice.vercel.app/" },
+    results: [
+      "カメラ撮影 → OCR による名刺情報の自動入力",
+      "音声メモでリアルタイムに会話内容を記録",
+      "AIによる自動タグ付け・分類・検索",
+      "PersonalプランとTeamプランのフリーミアム構成",
+    ],
+    screenshots: [],
+  },
+  {
+    slug: "wagashi-atelier",
+    type: "case-study",
+    featured: false,
+    title: "和菓子アトリエ",
+    tagline: "季節の和菓子レシピと体験予約サービス",
+    description:
+      "和菓子レシピのサブスクリプションサービスと体験教室予約を一体化したWebアプリ。" +
+      "Stripe決済・Neon DB・Brave Search API連携による管理ダッシュボードも搭載。",
+    thumbnail: "/images/case-wagashi-atelier-thumb.png",
+    tags: ["Next.js", "Stripe", "Neon PostgreSQL", "Vercel", "SaaS", "和菓子"],
+    links: { demo: "https://wagashi-atelier.vercel.app/" },
+    results: [
+      "レシピのサブスクリプション配信",
+      "体験教室のオンライン予約",
+      "Stripe連携による決済処理",
+      "管理ダッシュボードで運営効率化",
+    ],
+    screenshots: [],
+  },
+  {
+    slug: "tenku-game",
+    type: "case-study",
+    featured: false,
+    title: "TENKU-GAME",
+    tagline: "未成年向け安全ゲームコミュニティプラットフォーム",
+    description:
+      "未成年者を対象とした安全なゲームコミュニティプラットフォーム。" +
+      "Steam API連携・フォロー/相互フォロー機能・DMチャンネル作成を備えた" +
+      "Next.js × Neon PostgreSQL構成のWebアプリです。",
+    thumbnail: null,
+    tags: ["Next.js", "Neon PostgreSQL", "Steam API", "Vercel", "コミュニティ"],
+    links: { demo: "https://tenku-game.vercel.app/" },
+    results: [
+      "Steam API連携によるゲーム情報取得",
+      "フォロー・相互フォロー機能",
+      "安全なDMチャンネル機能",
+      "未成年向け安全設計",
+    ],
+    screenshots: [],
+  },
+  {
     slug: "hojo-ai",
     type: "case-study",
     featured: false,
