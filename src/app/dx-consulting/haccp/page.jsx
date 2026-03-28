@@ -2,10 +2,6 @@
 import { useState } from "react";
 import Link from "next/link";
 
-export const metadata = {
-  title: "HACCP AI | 株式会社egg",
-  description: "業種を選ぶだけでHACCPプランが5分で完成。食品衛生管理のAI自動化サービス。",
-};
 
 const features = [
   {

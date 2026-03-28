@@ -2,10 +2,6 @@
 import { useState } from "react";
 import Link from "next/link";
 
-export const metadata = {
-  title: "運送AI | 株式会社egg",
-  description: "ドライバーが話すだけで点呼記録・運行日報が完成。運送業のデジタル化をAIが支援。",
-};
 
 const features = [
   {
