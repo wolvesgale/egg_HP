@@ -77,6 +77,10 @@ export default function DxConsultingPage() {
               <i className="fas fa-cloud" />
               TENKU-AI を見る
             </a>
+            <a href="#pricing" className="inline-flex items-center gap-2 bg-white/10 text-white px-6 py-3 rounded-lg hover:bg-white/20 transition-colors text-sm tracking-wide">
+              <i className="fas fa-yen-sign" />
+              料金・メニュー
+            </a>
             <a href="#cases" className="inline-flex items-center gap-2 border border-white/20 text-gray-300 px-6 py-3 rounded-lg hover:border-white/40 hover:text-white transition-colors text-sm">
               <i className="fas fa-folder-open" />
               導入実績
@@ -274,6 +278,126 @@ export default function DxConsultingPage() {
               <p className="text-gray-600 font-mono text-sm">案件実績は随時追加予定です</p>
             </div>
           )}
+        </div>
+      </section>
+
+      {/* ── Pricing ── */}
+      <section id="pricing" className="py-24 px-6 border-t border-white/5 bg-aws-darker/40">
+        <div className="container mx-auto max-w-5xl">
+          <Reveal className="mb-12 text-center">
+            <p className="text-aws-orange font-mono text-xs tracking-[0.3em] uppercase mb-3">Service & Pricing</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">料金・サービスメニュー</h2>
+            <p className="text-gray-400 max-w-xl mx-auto">初回相談は無料です。まずはお気軽にご連絡ください。</p>
+          </Reveal>
+
+          <div className="grid md:grid-cols-2 gap-5 mb-10">
+            {[
+              {
+                icon: "fa-comments",
+                label: "スポット DX 相談",
+                price: "¥30,000",
+                unit: "/ 回（2時間）",
+                color: "border-white/10",
+                highlight: false,
+                features: [
+                  "現状業務ヒアリング＋改善提案",
+                  "ツール選定アドバイス（AI・クラウド・SaaS）",
+                  "議事録・提案資料を後日送付",
+                ],
+                cta: "まず相談する",
+                target: "「何から始めればいいか分からない」経営者の方向け",
+              },
+              {
+                icon: "fa-laptop-code",
+                label: "業務デジタル化支援",
+                price: "¥150,000〜",
+                unit: "/ プロジェクト",
+                color: "border-white/10",
+                highlight: false,
+                features: [
+                  "業務フロー整理 → ツール導入 → 定着支援",
+                  "Notion・Slack・クラウド会計・電帳法対応など",
+                  "期間：1〜2ヶ月",
+                ],
+                cta: "詳細を相談する",
+                target: "紙・Excel業務をデジタル化したい事業者向け",
+              },
+              {
+                icon: "fa-robot",
+                label: "AI 導入・自動化構築",
+                price: "¥300,000〜",
+                unit: "/ プロジェクト",
+                color: "border-aws-orange/40",
+                highlight: true,
+                features: [
+                  "生成AI（Claude・Gemini）を活用した業務自動化",
+                  "見積書作成・レポート生成・在庫管理など",
+                  "自社プロダクト HojoAI / TENKU-AI の導入支援",
+                  "期間：2〜3ヶ月",
+                ],
+                cta: "AI導入を相談する",
+                target: "繰り返し業務をAIで置き換えたい企業向け",
+              },
+              {
+                icon: "fa-code",
+                label: "Web / アプリ開発",
+                price: "¥500,000〜",
+                unit: "/ プロジェクト",
+                color: "border-white/10",
+                highlight: false,
+                features: [
+                  "業務管理システム・社内ツール開発",
+                  "技術スタック：Next.js / Firebase / AWS / PostgreSQL",
+                  "受発注・勤怠・在庫・現場管理など実績多数",
+                ],
+                cta: "開発を相談する",
+                target: "専用システムを一から構築したい企業向け",
+              },
+            ].map((plan, i) => (
+              <Reveal key={plan.label} delay={`animation-delay-${(i + 1) * 100}`}>
+                <div className={`relative rounded-2xl bg-aws-card border ${plan.color} p-7 h-full flex flex-col ${plan.highlight ? "ring-1 ring-aws-orange/30" : ""}`}>
+                  {plan.highlight && (
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                      <span className="bg-aws-orange text-aws-dark text-xs font-bold px-3 py-1 rounded-full tracking-wide">人気</span>
+                    </div>
+                  )}
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-lg bg-aws-orange/10 border border-aws-orange/20 flex items-center justify-center shrink-0">
+                      <i className={`fas ${plan.icon} text-aws-orange text-sm`} />
+                    </div>
+                    <h3 className="text-white font-semibold text-lg leading-tight">{plan.label}</h3>
+                  </div>
+                  <div className="mb-4">
+                    <span className="text-3xl font-bold text-aws-orange">{plan.price}</span>
+                    <span className="text-gray-500 text-sm ml-1">{plan.unit}</span>
+                  </div>
+                  <p className="text-gray-500 text-xs mb-5 border-l-2 border-aws-orange/30 pl-3">{plan.target}</p>
+                  <ul className="space-y-2 mb-6 flex-1">
+                    {plan.features.map((f) => (
+                      <li key={f} className="flex items-start gap-2 text-gray-400 text-sm">
+                        <i className="fas fa-check text-aws-orange/70 mt-0.5 text-xs shrink-0" />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <a href="/#contact"
+                    className={`inline-flex items-center justify-center gap-2 py-2.5 px-5 rounded-lg text-sm font-semibold transition-colors ${
+                      plan.highlight
+                        ? "bg-aws-orange text-aws-dark hover:bg-yellow-400"
+                        : "border border-white/15 text-gray-300 hover:border-white/30 hover:text-white"
+                    }`}>
+                    {plan.cta} →
+                  </a>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal>
+            <p className="text-center text-gray-600 text-sm">
+              ※ 料金は目安です。規模・要件により変動します。まずはお気軽にご相談ください。
+            </p>
+          </Reveal>
         </div>
       </section>
 
