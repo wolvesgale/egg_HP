@@ -150,6 +150,31 @@ export const portfolioItems = [
     ],
     screenshots: [],
   },
+
+  {
+    slug: "shacho-ai",
+    type: "product",
+    featured: true,
+    title: "ShaChoAI",
+    tagline: "中小企業の社長専用AI参謀。Googleログインだけで動き出す。",
+    description:
+      "ShaChoAIは、Gmailを自動解析して未返信・補助金・リスクを検知し、AI参謀が経営提案を届けるSaaSプロダクトです。" +
+      "Googleアカウントでログインするだけでセットアップ不要で稼働。LINE公式アカウントと連携することで、" +
+      "顧客からのLINEメッセージにAIが自動返信し、ダッシュボードから直接返信送信も可能です。",
+    thumbnail: null,
+    tags: ["SaaS", "Next.js", "Vercel", "Anthropic Claude", "LINE Messaging API", "Stripe", "Google OAuth", "Neon PostgreSQL"],
+    links: {
+      demo: "https://shacho.eggs.email",
+      signup: "https://shacho.eggs.email",
+    },
+    results: [
+      "Googleログインだけで即日稼働・設定ゼロ",
+      "Gmail解析でアクション候補を自動生成",
+      "LINEメッセージにAIが自動返信・ダッシュボードから直接送信",
+      "14日間無料トライアル · 月額¥3,980〜",
+    ],
+    screenshots: [],
+  },
 ];
 
 export function getPortfolioItem(slug) {
