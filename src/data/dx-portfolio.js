@@ -176,8 +176,8 @@ export const portfolioItems = [
 
   {
     slug: "shacho-ai",
-    type: "product",
-    featured: true,
+    type: "case-study",
+    featured: false,
     title: "ShaChoAI",
     tagline: "中小企業の社長専用AI参謀。Googleログインだけで動き出す。",
     description:
