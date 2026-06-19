@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getPortfolioItem, portfolioItems } from "../../../data/dx-portfolio";
+import { getPortfolioItem, portfolioItems, getThumbSrc } from "../../../data/dx-portfolio";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({ params }) {
@@ -54,9 +54,10 @@ export default function CaseStudyPage({ params }) {
         </div>
 
         {/* Main image */}
-        {item.thumbnail ? (
+        {getThumbSrc(item, { w: 1200, h: 675 }) ? (
           <div className="rounded-2xl overflow-hidden mb-10 aspect-video">
-            <img src={item.thumbnail} alt={item.title} className="w-full h-full object-cover" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={getThumbSrc(item, { w: 1200, h: 675 })} alt={item.title} className="w-full h-full object-cover" />
           </div>
         ) : (
           <div className="rounded-2xl bg-aws-card border border-white/5 mb-10 aspect-video flex items-center justify-center">

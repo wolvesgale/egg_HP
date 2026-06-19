@@ -95,10 +95,10 @@ function LoadingScreen({ onDone }) {
    Marquee (infinite scroll ticker)
 ───────────────────────────────────────────── */
 const TICKER_ITEMS = [
-  "EC 運営管理", "Fragrance", "DX コンサルティング", "TENKU-AI",
-  "Amazon", "調香 / 香料販売", "Cloud", "フレグランス事業",
-  "EC 運営管理", "Fragrance", "DX コンサルティング", "TENKU-AI",
-  "Amazon", "調香 / 香料販売", "Cloud", "フレグランス事業",
+  "EC 運営管理", "DX コンサルティング", "TENKU-AI", "Amazon",
+  "Cloud", "和菓子イベント", "AI Agent", "業務改革",
+  "EC 運営管理", "DX コンサルティング", "TENKU-AI", "Amazon",
+  "Cloud", "和菓子イベント", "AI Agent", "業務改革",
 ];
 
 function Marquee({ reverse = false }) {
@@ -194,15 +194,6 @@ const businessCards = [
   },
   {
     num: "02",
-    icon: "fa-wind",
-    title: "調香 / 香料販売",
-    en: "Fragrance",
-    description: "オリジナル調香から厳選香料の販売まで。電子書籍・オンライン教室も順次展開予定。",
-    href: "/fragrance",
-    accent: "from-rose-300/10 to-pink-200/10",
-  },
-  {
-    num: "03",
     icon: "fa-laptop-code",
     title: "DX コンサルティング",
     en: "Digital Transformation",
@@ -212,7 +203,7 @@ const businessCards = [
     highlight: true,
   },
   {
-    num: "04",
+    num: "03",
     icon: "fa-leaf",
     title: "和菓子イベント",
     en: "Wagashi",
@@ -221,98 +212,6 @@ const businessCards = [
     accent: "from-pink-300/10 to-rose-200/10",
   },
 ];
-
-/* ─────────────────────────────────────────────
-   Portfolio items
-   ※ サムネイル画像は public/images/portfolio/ に配置してください
-   　 例: /images/portfolio/work-01.jpg
-───────────────────────────────────────────── */
-const portfolioItems = [
-  {
-    id: "01",
-    thumb: null, // "/images/portfolio/work-01.jpg"
-    thumbGradient: "from-orange-200 via-amber-100 to-yellow-50",
-    thumbIcon: "fa-store",
-    category: "EC 運営管理",
-    title: "ECショップ立ち上げ支援",
-    description: "アパレルブランドのAmazon・メルカリ店舗を企画から日常運営まで一貫サポート。",
-  },
-  {
-    id: "02",
-    thumb: null, // "/images/portfolio/work-02.jpg"
-    thumbGradient: "from-rose-200 via-pink-100 to-fuchsia-50",
-    thumbIcon: "fa-wind",
-    category: "フレグランス事業",
-    title: "オリジナルフレグランス制作",
-    description: "ブランドコンセプトを香りで表現するカスタム調香〜ラベルデザインまでトータルプロデュース。",
-  },
-  {
-    id: "03",
-    thumb: null, // "/images/portfolio/work-03.jpg"
-    thumbGradient: "from-sky-200 via-blue-100 to-cyan-50",
-    thumbIcon: "fa-laptop-code",
-    category: "DX コンサルティング",
-    title: "業務プロセスのクラウド化",
-    description: "AWS・生成AI活用で中小企業の業務フローを刷新し、生産性を大幅に改善。",
-  },
-  {
-    id: "04",
-    thumb: null, // "/images/portfolio/work-04.jpg"
-    thumbGradient: "from-violet-200 via-purple-100 to-pink-50",
-    thumbIcon: "fa-robot",
-    category: "DX / TENKU-AI",
-    title: "TENKU-AI 導入支援",
-    description: "自社開発AIエージェントを活用した業務自動化・ナレッジ管理システムの構築。",
-  },
-  {
-    id: "05",
-    thumb: null, // "/images/portfolio/work-05.jpg"
-    thumbGradient: "from-emerald-200 via-teal-100 to-green-50",
-    thumbIcon: "fa-chart-line",
-    category: "EC 運営管理",
-    title: "EC売上分析・改善提案",
-    description: "データドリブンな商品ページ最適化とレビュー戦略で転換率と評価を向上。",
-  },
-  {
-    id: "06",
-    thumb: null, // "/images/portfolio/work-06.jpg"
-    thumbGradient: "from-rose-200 via-red-100 to-orange-50",
-    thumbIcon: "fa-leaf",
-    category: "和菓子イベント",
-    title: "苺大福 × ポップアップ出展",
-    description: "季節の和菓子をテーマにしたイベント企画・運営。来場者との直接接点でブランド体験を創出。",
-  },
-  {
-    id: "07",
-    thumb: null,
-    thumbGradient: "from-green-200 via-emerald-100 to-teal-50",
-    thumbIcon: "fa-file-invoice",
-    category: "DX / AI SaaS",
-    title: "HojoAI — 補助金申請書AI自動生成",
-    description: "AIが補助金申請書を自動生成し、採択率の高い申請書を数分で作成できるSaaS。Gemini × Next.js × Clerk構成で、サンプルPDFプレビューやX自動投稿機能も搭載。",
-  },
-];
-
-/* ─────────────────────────────────────────────
-   Portfolio Thumbnail
-───────────────────────────────────────────── */
-function PortfolioThumb({ item }) {
-  if (item.thumb) {
-    return (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
-        src={item.thumb}
-        alt={item.title}
-        className="w-full h-full object-cover"
-      />
-    );
-  }
-  return (
-    <div className={`w-full h-full bg-gradient-to-br ${item.thumbGradient} flex items-center justify-center`}>
-      <i className={`fas ${item.thumbIcon} text-white/60 text-3xl`} />
-    </div>
-  );
-}
 
 /* ─────────────────────────────────────────────
    Home page
@@ -381,8 +280,8 @@ export default function HomePage() {
                 </h1>
 
                 <p className="font-crimson-text text-egg-brown text-xl leading-relaxed max-w-md mb-10">
-                  EC・フレグランス・DX・和菓子。<br />
-                  4つの軸で、ビジネスと文化の可能性を広げます。
+                  EC・DX・和菓子。<br />
+                  3つの軸で、ビジネスと文化の可能性を広げます。
                 </p>
 
                 <div className="flex flex-wrap gap-3">
@@ -486,7 +385,7 @@ export default function HomePage() {
               <div className="mt-5 mx-auto w-16 h-px bg-gradient-to-r from-transparent via-egg-pink to-transparent" />
             </Reveal>
 
-            <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
+            <div className="grid md:grid-cols-3 gap-5">
               {businessCards.map(({ num, icon, title, en, description, href, accent, highlight }, i) => (
                 <Reveal key={href} delay={`animation-delay-${(i + 1) * 100}`}>
                   <Link href={href} className="group block h-full">
@@ -528,67 +427,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ── Portfolio ── */}
-        <section id="portfolio" className="py-28 px-6 bg-egg-cream relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_100%_0%,rgba(212,165,165,0.09),transparent_55%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_0%_100%,rgba(248,225,225,0.12),transparent_50%)]" />
-
-          <div className="container mx-auto relative">
-            <Reveal className="text-center mb-16">
-              <p className="font-crimson-text text-egg-pink tracking-[0.3em] text-xs uppercase mb-3">Our Works</p>
-              <h2 className="font-cormorant text-5xl md:text-6xl text-egg-rose">Portfolio</h2>
-              <div className="mt-5 mx-auto w-16 h-px bg-gradient-to-r from-transparent via-egg-pink to-transparent" />
-            </Reveal>
-
-            <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
-              {portfolioItems.map(({ id, category, title, description, thumbGradient, thumbIcon, thumb }, i) => (
-                <Reveal key={id} delay={`animation-delay-${(i % 3 + 1) * 100}`}>
-                  <div className="group bg-white rounded-2xl overflow-hidden shadow-egg-sm hover:shadow-egg-md transition-all duration-400 hover:-translate-y-1.5">
-
-                    {/* Thumbnail */}
-                    <div className="relative h-48 overflow-hidden">
-                      {thumb ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
-                          src={thumb}
-                          alt={title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
-                      ) : (
-                        <div className={`w-full h-full bg-gradient-to-br ${thumbGradient} flex items-center justify-center group-hover:scale-105 transition-transform duration-500`}>
-                          <i className={`fas ${thumbIcon} text-white/50 text-4xl`} />
-                        </div>
-                      )}
-                      {/* Number overlay */}
-                      <span className="absolute top-3 left-3 font-cormorant text-white/60 text-4xl leading-none select-none drop-shadow">
-                        {id}
-                      </span>
-                      {/* Category badge */}
-                      <span className="absolute bottom-3 left-3 bg-white/85 backdrop-blur-sm text-egg-rose font-noto text-[10px] tracking-wide px-2.5 py-1 rounded-full">
-                        {category}
-                      </span>
-                    </div>
-
-                    {/* Text */}
-                    <div className="p-6">
-                      <h3 className="font-cormorant text-xl text-egg-rose mb-2 leading-snug">{title}</h3>
-                      <p className="font-noto text-egg-brown/70 text-sm leading-relaxed">{description}</p>
-                    </div>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-
-            {/* Divider line below grid */}
-            <Reveal className="mt-14 text-center">
-              <div className="mx-auto w-32 h-px bg-gradient-to-r from-transparent via-egg-pink/50 to-transparent mb-6" />
-              <p className="font-crimson-text text-egg-brown/50 text-sm italic">
-                More works coming soon
-              </p>
-            </Reveal>
-          </div>
-        </section>
-
         {/* ── Second marquee (reverse) ── */}
         <div className="bg-white border-y border-egg-blush py-4 overflow-hidden select-none">
           <Marquee reverse />
@@ -608,7 +446,7 @@ export default function HomePage() {
                 </h2>
                 <div className="space-y-5">
                   <p className="font-noto text-egg-brown text-base leading-loose">
-                    株式会社eggは、フレグランス・ECビジネス・デジタルトランスフォーメーション・和菓子イベントの4つの領域で事業を展開するスタートアップです。
+                    株式会社eggは、ECビジネス・デジタルトランスフォーメーション・和菓子イベントの3つの領域で事業を展開するスタートアップです。
                   </p>
                   <p className="font-noto text-egg-brown/75 text-base leading-loose">
                     外資大手パブリッククラウドやスタートアップ企業での経験を持つメンバーが、各分野の専門知識を掛け合わせ、お客様のビジネスの可能性を広げるお手伝いをします。
@@ -621,7 +459,7 @@ export default function HomePage() {
               <Reveal delay="animation-delay-200">
                 <div className="grid grid-cols-2 gap-4">
                   {[
-                    { num: "4",      label: "事業領域",     sub: "Business Domains" },
+                    { num: "3",      label: "事業領域",     sub: "Business Domains" },
                     { num: "2025",   label: "設立年",       sub: "Founded" },
                     { num: "∞",      label: "可能性",       sub: "Possibilities" },
                     { num: "AWS",    label: "技術基盤",     sub: "Cloud Platform" },

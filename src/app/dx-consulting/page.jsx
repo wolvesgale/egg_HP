@@ -1,7 +1,7 @@
 "use client";
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
-import { portfolioItems, getCaseStudies } from "../../data/dx-portfolio";
+import { portfolioItems, getCaseStudies, getThumbSrc } from "../../data/dx-portfolio";
 
 function useVisible(threshold = 0.12) {
   const ref  = useRef(null);
@@ -183,8 +183,9 @@ export default function DxConsultingPage() {
                     {/* Visual */}
                     <div className="lg:w-72 w-full">
                       <div className="relative rounded-xl bg-aws-darker border border-white/8 overflow-hidden aspect-square flex items-center justify-center">
-                        {featured.thumbnail ? (
-                          <img src={featured.thumbnail} alt={featured.title} className="w-full h-full object-cover" />
+                        {getThumbSrc(featured) ? (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img src={getThumbSrc(featured)} alt={featured.title} loading="lazy" className="w-full h-full object-cover" />
                         ) : (
                           <div className="text-center p-8">
                             <div className="w-20 h-20 mx-auto mb-5 rounded-2xl bg-aws-orange/10 border border-aws-orange/20 flex items-center justify-center">
@@ -231,8 +232,9 @@ export default function DxConsultingPage() {
                     <div className="group rounded-xl overflow-hidden bg-aws-card hover:bg-[#354a60] transition-all duration-300 border border-white/5 hover:border-aws-orange/20 hover:-translate-y-1 h-full">
                       {/* Thumbnail */}
                       <div className="aspect-video bg-aws-darker flex items-center justify-center relative overflow-hidden">
-                        {item.thumbnail ? (
-                          <img src={item.thumbnail} alt={item.title} className="w-full h-full object-cover" />
+                        {getThumbSrc(item) ? (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img src={getThumbSrc(item)} alt={item.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                         ) : (
                           <div className="text-center">
                             <i className="fas fa-laptop-code text-aws-orange/20 text-6xl" />

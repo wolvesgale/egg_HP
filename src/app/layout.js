@@ -2,7 +2,7 @@ import './globals.css'
 
 export const metadata = {
   title: '株式会社egg',
-  description: 'EC運営管理・調香/香料販売・DXコンサルティング | 株式会社egg',
+  description: 'EC運営管理・DXコンサルティング・和菓子イベント | 株式会社egg',
 }
 
 export default function RootLayout({ children }) {
