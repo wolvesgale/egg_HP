@@ -34,7 +34,7 @@ export const portfolioItems = [
       "卸売業の受発注・在庫・請求管理をクラウドネイティブ構成にリニューアル。" +
       "Next.js 15 × AWS Lambda × RDS (PostgreSQL) でサーバーレスアーキテクチャを採用し、" +
       "業務の自動化と可視化を実現しました。Amplify による DevOps も刷新。",
-    thumbnail: null,
+    thumbnail: "/images/case-wholesale-thumb.png",
     tags: ["Next.js 15", "AWS Lambda", "Amazon RDS", "PostgreSQL", "Amplify", "TypeScript", "サーバーレス"],
     results: [
       "受発注処理の自動化・ペーパーレス化",
@@ -55,7 +55,7 @@ export const portfolioItems = [
       "複数店舗の勤怠打刻・POSレジ・売上データをリアルタイムに一元管理するシステムを構築。" +
       "Supabase をバックエンドに据えたモバイルファーストの設計で、" +
       "現場スタッフがスマートフォンから直感的に操作できる UX を実現しました。",
-    thumbnail: null,
+    thumbnail: "/images/case-store-thumb.png",
     tags: ["Supabase", "Next.js", "TypeScript", "モバイル対応", "リアルタイム DB", "PWA"],
     results: [
       "勤怠管理の完全デジタル化",
@@ -76,7 +76,7 @@ export const portfolioItems = [
       "在庫の入出庫登録・棚卸・在庫台帳・月次レポートを一元管理するWebシステム。" +
       "マネージャー承認フローや在庫台帳のリアルタイム更新を実装し、" +
       "現場担当者からマネージャーまで使いやすいUI設計を実現しました。",
-    thumbnail: null,
+    thumbnail: "/images/case-inventory-thumb.png",
     tags: ["Next.js", "PostgreSQL", "TypeScript", "承認フロー", "在庫管理"],
     results: [
       "入出庫登録・承認フローのデジタル化",
@@ -97,7 +97,7 @@ export const portfolioItems = [
       "イベントの代理店・会場・仲介業者・ユーザーを統合管理するダークテーマのWebシステム。" +
       "カレンダービューでのスケジュール可視化・売上管理・売上レポート機能を備え、" +
       "複雑な関係者構造をシンプルなUIで管理できます。",
-    thumbnail: null,
+    thumbnail: "/images/case-saiya-thumb.png",
     tags: ["Next.js", "PostgreSQL", "TypeScript", "カレンダー", "売上管理", "ダークUI"],
     results: [
       "代理店・会場・仲介を横断した一元管理",
@@ -147,6 +147,29 @@ export const portfolioItems = [
       "サンプルPDFプレビュー機能搭載",
       "X（Twitter）自動投稿機能",
       "フリーミアムプラン構成",
+    ],
+    screenshots: [],
+  },
+
+  {
+    slug: "aletheia",
+    type: "case-study",
+    featured: false,
+    title: "Aletheia",
+    tagline: "URLを入力するだけのAIセキュリティ診断SaaS",
+    description:
+      "ドメイン・メール運用のセキュリティ状態を、URLを入力するだけで自動診断するAI SaaS。" +
+      "SSL証明書／HTTPS、SPF・DKIM・DMARC、HTTPセキュリティヘッダーなど6項目を自動チェックし、" +
+      "A〜Fのグレードとスコアで可視化。さらにAIが日本語で改善推奨事項まで提示します。" +
+      "LINEアカウントでログインするだけで、すぐに無料で診断を開始できます。",
+    thumbnail: null,
+    tags: ["SaaS", "Next.js", "Vercel", "セキュリティ診断", "LINE Login", "AI"],
+    links: { demo: "https://aletheia-wolvesgales-projects.vercel.app" },
+    results: [
+      "URL入力だけで6項目を自動診断・A〜Fグレード評価",
+      "SSL/HTTPS・SPF・DKIM・DMARC・セキュリティヘッダーを総合チェック",
+      "AIが日本語で改善推奨事項を提示",
+      "LINEログインで無料・すぐに診断開始",
     ],
     screenshots: [],
   },
