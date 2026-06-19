@@ -4,7 +4,6 @@ const footerLinks = [
   { href: "/#business",      label: "Business" },
   { href: "/dx-consulting",  label: "DX / TENKU" },
   { href: "/ec-management",  label: "EC 運営" },
-  { href: "/fragrance",      label: "Fragrance" },
   { href: "/wagashi",        label: "Wagashi" },
   { href: "/#company",       label: "Company" },
   { href: "/#contact",       label: "Contact" },
@@ -62,7 +61,7 @@ export default function Footer() {
             © 2025 株式会社egg. All rights reserved.
           </p>
           <p className="font-crimson-text text-white/20 text-xs">
-            EC · Fragrance · DX Consulting · Wagashi
+            EC · DX Consulting · Wagashi
           </p>
         </div>
       </div>
