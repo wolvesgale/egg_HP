@@ -1,7 +1,7 @@
 "use client";
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
-import { portfolioItems, getCaseStudies, getThumbSrc } from "../../data/dx-portfolio";
+import { portfolioItems, getCaseStudies, getThumbSrc, getServiceUrl } from "../../data/dx-portfolio";
 
 function useVisible(threshold = 0.12) {
   const ref  = useRef(null);
@@ -226,11 +226,13 @@ export default function DxConsultingPage() {
 
           {cases.length > 0 ? (
             <div className="grid md:grid-cols-2 gap-5">
-              {cases.map((item, i) => (
+              {cases.map((item, i) => {
+                const serviceUrl = getServiceUrl(item);
+                return (
                 <Reveal key={item.slug} delay={`animation-delay-${(i + 1) * 100}`}>
-                  <Link href={`/dx-consulting/${item.slug}`}>
-                    <div className="group rounded-xl overflow-hidden bg-aws-card hover:bg-[#354a60] transition-all duration-300 border border-white/5 hover:border-aws-orange/20 hover:-translate-y-1 h-full">
-                      {/* Thumbnail */}
+                  <div className="group relative flex flex-col rounded-xl overflow-hidden bg-aws-card hover:bg-[#354a60] transition-all duration-300 border border-white/5 hover:border-aws-orange/20 hover:-translate-y-1 h-full">
+                    {/* Thumbnail (→ 詳細ページ) */}
+                    <Link href={`/dx-consulting/${item.slug}`} className="block">
                       <div className="aspect-video bg-aws-darker flex items-center justify-center relative overflow-hidden">
                         {getThumbSrc(item) ? (
                           // eslint-disable-next-line @next/next/no-img-element
@@ -242,37 +244,61 @@ export default function DxConsultingPage() {
                         )}
                         <div className="absolute inset-0 bg-gradient-to-t from-aws-card/80 to-transparent" />
                       </div>
+                    </Link>
 
-                      <div className="p-6">
+                    <div className="p-6 flex flex-col flex-1">
+                      <Link href={`/dx-consulting/${item.slug}`} className="block">
                         <p className="text-aws-orange text-xs font-mono tracking-widest mb-2 uppercase">Case Study</p>
                         <h3 className="text-white font-semibold text-lg mb-1 group-hover:text-aws-orange transition-colors leading-tight">
                           {item.title}
                         </h3>
                         <p className="text-gray-500 text-sm mb-4">{item.tagline}</p>
+                      </Link>
 
-                        <div className="flex flex-wrap gap-1.5 mb-4">
-                          {item.tags.slice(0, 4).map((tag) => (
-                            <span key={tag} className="bg-aws-darker text-gray-500 text-xs px-2 py-0.5 rounded border border-white/5">
-                              {tag}
-                            </span>
+                      <div className="flex flex-wrap gap-1.5 mb-4">
+                        {item.tags.slice(0, 4).map((tag) => (
+                          <span key={tag} className="bg-aws-darker text-gray-500 text-xs px-2 py-0.5 rounded border border-white/5">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+
+                      {item.results && (
+                        <ul className="space-y-1">
+                          {item.results.slice(0, 2).map((r) => (
+                            <li key={r} className="flex items-start gap-2 text-gray-500 text-xs">
+                              <i className="fas fa-check text-aws-orange/60 mt-0.5 text-[10px] shrink-0" />
+                              {r}
+                            </li>
                           ))}
-                        </div>
+                        </ul>
+                      )}
 
-                        {item.results && (
-                          <ul className="space-y-1">
-                            {item.results.slice(0, 2).map((r) => (
-                              <li key={r} className="flex items-start gap-2 text-gray-500 text-xs">
-                                <i className="fas fa-check text-aws-orange/60 mt-0.5 text-[10px] shrink-0" />
-                                {r}
-                              </li>
-                            ))}
-                          </ul>
+                      {/* Actions */}
+                      <div className="mt-auto pt-5 flex flex-wrap items-center gap-3">
+                        {serviceUrl && (
+                          <a
+                            href={serviceUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 bg-aws-orange text-aws-dark font-bold text-xs px-3.5 py-2 rounded-lg hover:bg-yellow-400 transition-colors"
+                          >
+                            <i className="fas fa-external-link-alt text-[10px]" />
+                            サービスを見る
+                          </a>
                         )}
+                        <Link
+                          href={`/dx-consulting/${item.slug}`}
+                          className="inline-flex items-center gap-1 text-gray-400 hover:text-aws-orange text-xs font-mono transition-colors"
+                        >
+                          詳細を見る →
+                        </Link>
                       </div>
                     </div>
-                  </Link>
+                  </div>
                 </Reveal>
-              ))}
+                );
+              })}
             </div>
           ) : (
             <div className="text-center py-24 border border-dashed border-white/8 rounded-2xl">

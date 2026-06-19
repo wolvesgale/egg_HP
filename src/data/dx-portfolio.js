@@ -224,3 +224,13 @@ export function getThumbSrc(item, { w = 800, h = 450 } = {}) {
 
   return null;
 }
+
+/**
+ * 公開中の対象サービスへのアクセスURLを取得する。
+ * demo / signup / purchase のうち、実在する http(s) リンクを返す。
+ * プレースホルダー（例: "TENKU_DEMO_URL"）や未設定の場合は null。
+ */
+export function getServiceUrl(item) {
+  const link = item?.links?.demo || item?.links?.signup || item?.links?.purchase;
+  return link && /^https?:\/\//.test(link) ? link : null;
+}
