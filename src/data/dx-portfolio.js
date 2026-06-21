@@ -197,6 +197,29 @@ export const portfolioItems = [
   },
 
   {
+    slug: "saiya-event-company",
+    type: "case-study",
+    featured: false,
+    title: "株式会社Saiya コーポレートサイト",
+    tagline: "イベント販売運営会社のコーポレート／サービスサイト",
+    description:
+      "イベント出店支援プラットフォームを展開する株式会社Saiya様のコーポレート兼サービスサイト。" +
+      "全国の出店場所確保・商材調達・販売ノウハウ・パートナー連携を訴求し、" +
+      "販売パートナー／ビジネスパートナー向けの導線、出店フロー、実績事例、採用情報を掲載。" +
+      "Next.js による画像最適化・レスポンシブ対応の高速サイトとして構築しています。",
+    thumbnail: null,
+    tags: ["コーポレートサイト", "LP", "Next.js", "レスポンシブ", "イベント出店", "採用"],
+    links: { demo: "https://saiya-event.company/" },
+    results: [
+      "販売／ビジネスパートナー向けの訴求導線を設計",
+      "出店までの5ステップフローを可視化",
+      "実績事例・採用情報を掲載",
+      "Next.jsによる画像最適化・レスポンシブ実装",
+    ],
+    screenshots: [],
+  },
+
+  {
     slug: "shacho-ai",
     type: "case-study",
     featured: false,
