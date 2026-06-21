@@ -175,6 +175,28 @@ export const portfolioItems = [
   },
 
   {
+    slug: "dandori-cho",
+    type: "case-study",
+    featured: false,
+    title: "段取り帳（DANDORI帳）",
+    tagline: "建設業の協力会社向け現場管理クラウド",
+    description:
+      "建設業の下請け・協力会社向けに、日報入力から利益管理・給与計算・出勤簿・経費精算・請求書作成までを自動化するクラウド現場管理システム。" +
+      "スマートフォンで約1分の日報入力、領収書OCR、作業員のスキル・資格・保険情報の一元管理に対応。" +
+      "「ITが苦手でも使える」モバイルファースト設計で、AWS S3＋CloudFront 配信を採用しています。",
+    thumbnail: null,
+    tags: ["建設DX", "現場管理", "日報・給与計算", "OCR", "モバイルファースト", "AWS CloudFront", "SaaS"],
+    links: { demo: "https://d2sfwu4o40nl6d.cloudfront.net/" },
+    results: [
+      "スマホで約1分の日報入力・現場利益をリアルタイム可視化",
+      "日報データから給与・出勤簿を自動作成し計算ミスを削減",
+      "領収書OCRで経費精算を効率化",
+      "作業員のスキル・資格・保険情報を一元管理",
+    ],
+    screenshots: [],
+  },
+
+  {
     slug: "shacho-ai",
     type: "case-study",
     featured: false,
