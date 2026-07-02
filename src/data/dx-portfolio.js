@@ -7,7 +7,7 @@ export const portfolioItems = [
   {
     slug: "tenku",
     type: "product",
-    featured: true,
+    featured: false,
     title: "TENKU AI Agent",
     tagline: "技能実習・特定技能・特定活動を1システムで統合管理",
     description:
@@ -177,7 +177,7 @@ export const portfolioItems = [
   {
     slug: "dandori-cho",
     type: "case-study",
-    featured: false,
+    featured: true,
     title: "段取り帳（DANDORI帳）",
     tagline: "建設業の協力会社向け現場管理クラウド",
     description:

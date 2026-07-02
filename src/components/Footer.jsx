@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const footerLinks = [
   { href: "/#business",      label: "Business" },
-  { href: "/dx-consulting",  label: "DX / TENKU" },
+  { href: "/dx-consulting",  label: "DX" },
   { href: "/ec-management",  label: "EC 運営" },
   { href: "/wagashi",        label: "Wagashi" },
   { href: "/#company",       label: "Company" },
