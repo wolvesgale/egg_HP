@@ -36,8 +36,9 @@ const techLogos = [
 ];
 
 export default function DxConsultingPage() {
-  const featured = getCaseStudies().find((item) => item.featured);
-  const cases    = getCaseStudies().filter((item) => !item.featured);
+  const featured    = getCaseStudies().find((item) => item.featured);
+  const featuredUrl = featured ? getServiceUrl(featured) : null;
+  const cases       = getCaseStudies().filter((item) => !item.featured);
 
   return (
     <main className="pb-20">
@@ -121,19 +122,39 @@ export default function DxConsultingPage() {
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(255,153,0,0.06),transparent_60%)] group-hover:opacity-150 transition-opacity pointer-events-none" />
 
                 <div className="relative flex flex-col lg:flex-row">
-                  {/* Visual */}
+                  {/* Visual (→ 対象サービスへ遷移) */}
                   <div className="lg:w-[46%] w-full">
-                    <div className="relative aspect-video lg:h-full lg:min-h-[22rem] bg-aws-darker overflow-hidden">
-                      {getThumbSrc(featured, { w: 1200, h: 800 }) ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img src={getThumbSrc(featured, { w: 1200, h: 800 })} alt={featured.title} loading="lazy" className="w-full h-full object-cover" />
+                    {(() => {
+                      const Visual = (
+                        <>
+                          {getThumbSrc(featured, { w: 1200, h: 800 }) ? (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img src={getThumbSrc(featured, { w: 1200, h: 800 })} alt={featured.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center">
+                              <i className="fas fa-laptop-code text-aws-orange/20 text-7xl" />
+                            </div>
+                          )}
+                          <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-aws-card/70 to-transparent pointer-events-none" />
+                          {featuredUrl && (
+                            <span className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 bg-aws-dark/85 text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm opacity-90">
+                              <i className="fas fa-external-link-alt text-[10px]" />
+                              サイトを開く
+                            </span>
+                          )}
+                        </>
+                      );
+                      const cls = "relative block aspect-video lg:h-full lg:min-h-[22rem] bg-aws-darker overflow-hidden";
+                      return featuredUrl ? (
+                        <a href={featuredUrl} target="_blank" rel="noopener noreferrer" className={cls}>
+                          {Visual}
+                        </a>
                       ) : (
-                        <div className="w-full h-full flex items-center justify-center">
-                          <i className="fas fa-laptop-code text-aws-orange/20 text-7xl" />
-                        </div>
-                      )}
-                      <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-aws-card/70 to-transparent" />
-                    </div>
+                        <Link href={`/dx-consulting/${featured.slug}`} className={cls}>
+                          {Visual}
+                        </Link>
+                      );
+                    })()}
                   </div>
 
                   {/* Content */}
@@ -149,8 +170,18 @@ export default function DxConsultingPage() {
                     </div>
 
                     <h2 className="text-3xl md:text-4xl font-bold text-white mb-3 tracking-tight leading-tight">
-                      {featured.title}
+                      {featuredUrl ? (
+                        <a href={featuredUrl} target="_blank" rel="noopener noreferrer" className="hover:text-aws-orange transition-colors">
+                          {featured.title}
+                        </a>
+                      ) : featured.title}
                     </h2>
+                    {featuredUrl && (
+                      <a href={featuredUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-gray-500 hover:text-aws-orange text-xs font-mono mb-4 transition-colors break-all">
+                        <i className="fas fa-link text-[10px]" />
+                        {featuredUrl.replace(/^https?:\/\//, "").replace(/\/$/, "")}
+                      </a>
+                    )}
                     <p className="text-aws-orange text-lg font-medium mb-5">{featured.tagline}</p>
 
                     <p className="text-gray-300 leading-relaxed mb-7 max-w-xl">{featured.description}</p>
