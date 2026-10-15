@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getPortfolioItem, portfolioItems, getThumbSrc } from "../../../data/dx-portfolio";
+import { getPortfolioItem, portfolioItems, getThumbSrc, getServiceUrl } from "../../../data/dx-portfolio";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({ params }) {
@@ -51,6 +51,18 @@ export default function CaseStudyPage({ params }) {
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-3">{item.title}</h1>
           <p className="text-aws-orange text-lg">{item.tagline}</p>
+
+          {getServiceUrl(item) && (
+            <a
+              href={getServiceUrl(item)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 mt-6 bg-aws-orange text-aws-dark font-bold px-5 py-2.5 rounded-lg hover:bg-yellow-400 transition-colors text-sm"
+            >
+              <i className="fas fa-external-link-alt text-xs" />
+              サービスを見る
+            </a>
+          )}
         </div>
 
         {/* Main image */}

@@ -7,7 +7,7 @@ export const portfolioItems = [
   {
     slug: "tenku",
     type: "product",
-    featured: true,
+    featured: false,
     title: "TENKU AI Agent",
     tagline: "技能実習・特定技能・特定活動を1システムで統合管理",
     description:
@@ -34,7 +34,7 @@ export const portfolioItems = [
       "卸売業の受発注・在庫・請求管理をクラウドネイティブ構成にリニューアル。" +
       "Next.js 15 × AWS Lambda × RDS (PostgreSQL) でサーバーレスアーキテクチャを採用し、" +
       "業務の自動化と可視化を実現しました。Amplify による DevOps も刷新。",
-    thumbnail: null,
+    thumbnail: "/images/case-wholesale-thumb.png",
     tags: ["Next.js 15", "AWS Lambda", "Amazon RDS", "PostgreSQL", "Amplify", "TypeScript", "サーバーレス"],
     results: [
       "受発注処理の自動化・ペーパーレス化",
@@ -55,7 +55,7 @@ export const portfolioItems = [
       "複数店舗の勤怠打刻・POSレジ・売上データをリアルタイムに一元管理するシステムを構築。" +
       "Supabase をバックエンドに据えたモバイルファーストの設計で、" +
       "現場スタッフがスマートフォンから直感的に操作できる UX を実現しました。",
-    thumbnail: null,
+    thumbnail: "/images/case-store-thumb.png",
     tags: ["Supabase", "Next.js", "TypeScript", "モバイル対応", "リアルタイム DB", "PWA"],
     results: [
       "勤怠管理の完全デジタル化",
@@ -76,7 +76,7 @@ export const portfolioItems = [
       "在庫の入出庫登録・棚卸・在庫台帳・月次レポートを一元管理するWebシステム。" +
       "マネージャー承認フローや在庫台帳のリアルタイム更新を実装し、" +
       "現場担当者からマネージャーまで使いやすいUI設計を実現しました。",
-    thumbnail: null,
+    thumbnail: "/images/case-inventory-thumb.png",
     tags: ["Next.js", "PostgreSQL", "TypeScript", "承認フロー", "在庫管理"],
     results: [
       "入出庫登録・承認フローのデジタル化",
@@ -97,7 +97,7 @@ export const portfolioItems = [
       "イベントの代理店・会場・仲介業者・ユーザーを統合管理するダークテーマのWebシステム。" +
       "カレンダービューでのスケジュール可視化・売上管理・売上レポート機能を備え、" +
       "複雑な関係者構造をシンプルなUIで管理できます。",
-    thumbnail: null,
+    thumbnail: "/images/case-saiya-thumb.png",
     tags: ["Next.js", "PostgreSQL", "TypeScript", "カレンダー", "売上管理", "ダークUI"],
     results: [
       "代理店・会場・仲介を横断した一元管理",
@@ -152,9 +152,77 @@ export const portfolioItems = [
   },
 
   {
-    slug: "shacho-ai",
-    type: "product",
+    slug: "aletheia",
+    type: "case-study",
+    featured: false,
+    title: "Aletheia",
+    tagline: "URLを入力するだけのAIセキュリティ診断SaaS",
+    description:
+      "ドメイン・メール運用のセキュリティ状態を、URLを入力するだけで自動診断するAI SaaS。" +
+      "SSL証明書／HTTPS、SPF・DKIM・DMARC、HTTPセキュリティヘッダーなど6項目を自動チェックし、" +
+      "A〜Fのグレードとスコアで可視化。さらにAIが日本語で改善推奨事項まで提示します。" +
+      "LINEアカウントでログインするだけで、すぐに無料で診断を開始できます。",
+    thumbnail: null,
+    tags: ["SaaS", "Next.js", "Vercel", "セキュリティ診断", "LINE Login", "AI"],
+    links: { demo: "https://aletheia-wolvesgales-projects.vercel.app" },
+    results: [
+      "URL入力だけで6項目を自動診断・A〜Fグレード評価",
+      "SSL/HTTPS・SPF・DKIM・DMARC・セキュリティヘッダーを総合チェック",
+      "AIが日本語で改善推奨事項を提示",
+      "LINEログインで無料・すぐに診断開始",
+    ],
+    screenshots: [],
+  },
+
+  {
+    slug: "dandori-cho",
+    type: "case-study",
     featured: true,
+    title: "段取り帳（DANDORI帳）",
+    tagline: "建設業の協力会社向け現場管理クラウド",
+    description:
+      "建設業の下請け・協力会社向けに、日報入力から利益管理・給与計算・出勤簿・経費精算・請求書作成までを自動化するクラウド現場管理システム。" +
+      "スマートフォンで約1分の日報入力、領収書OCR、作業員のスキル・資格・保険情報の一元管理に対応。" +
+      "「ITが苦手でも使える」モバイルファースト設計で、AWS S3＋CloudFront 配信を採用しています。",
+    thumbnail: null,
+    tags: ["建設DX", "現場管理", "日報・給与計算", "OCR", "モバイルファースト", "AWS CloudFront", "SaaS"],
+    links: { demo: "https://d2sfwu4o40nl6d.cloudfront.net/" },
+    results: [
+      "スマホで約1分の日報入力・現場利益をリアルタイム可視化",
+      "日報データから給与・出勤簿を自動作成し計算ミスを削減",
+      "領収書OCRで経費精算を効率化",
+      "作業員のスキル・資格・保険情報を一元管理",
+    ],
+    screenshots: [],
+  },
+
+  {
+    slug: "saiya-event-company",
+    type: "case-study",
+    featured: false,
+    title: "株式会社Saiya コーポレートサイト",
+    tagline: "イベント販売運営会社のコーポレート／サービスサイト",
+    description:
+      "イベント出店支援プラットフォームを展開する株式会社Saiya様のコーポレート兼サービスサイト。" +
+      "全国の出店場所確保・商材調達・販売ノウハウ・パートナー連携を訴求し、" +
+      "販売パートナー／ビジネスパートナー向けの導線、出店フロー、実績事例、採用情報を掲載。" +
+      "Next.js による画像最適化・レスポンシブ対応の高速サイトとして構築しています。",
+    thumbnail: null,
+    tags: ["コーポレートサイト", "LP", "Next.js", "レスポンシブ", "イベント出店", "採用"],
+    links: { demo: "https://saiya-event.company/" },
+    results: [
+      "販売／ビジネスパートナー向けの訴求導線を設計",
+      "出店までの5ステップフローを可視化",
+      "実績事例・採用情報を掲載",
+      "Next.jsによる画像最適化・レスポンシブ実装",
+    ],
+    screenshots: [],
+  },
+
+  {
+    slug: "shacho-ai",
+    type: "case-study",
+    featured: false,
     title: "ShaChoAI",
     tagline: "中小企業の社長専用AI参謀。Googleログインだけで動き出す。",
     description:
@@ -200,4 +268,14 @@ export function getThumbSrc(item, { w = 800, h = 450 } = {}) {
   }
 
   return null;
+}
+
+/**
+ * 公開中の対象サービスへのアクセスURLを取得する。
+ * demo / signup / purchase のうち、実在する http(s) リンクを返す。
+ * プレースホルダー（例: "TENKU_DEMO_URL"）や未設定の場合は null。
+ */
+export function getServiceUrl(item) {
+  const link = item?.links?.demo || item?.links?.signup || item?.links?.purchase;
+  return link && /^https?:\/\//.test(link) ? link : null;
 }
