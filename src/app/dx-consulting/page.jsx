@@ -372,7 +372,7 @@ export default function DxConsultingPage() {
                 features: [
                   "生成AI（Claude・Gemini）を活用した業務自動化",
                   "見積書作成・レポート生成・在庫管理など",
-                  "自社プロダクト HojoAI / TENKU-AI の導入支援",
+                  "自社開発の AI SaaS（HojoAI 等）の導入支援",
                   "期間：2〜3ヶ月",
                 ],
                 cta: "AI導入を相談する",
@@ -453,7 +453,7 @@ export default function DxConsultingPage() {
                 </div>
                 <h3 className="text-3xl font-bold text-white mb-4">DX推進のご相談</h3>
                 <p className="text-gray-400 mb-8 max-w-xl mx-auto leading-relaxed">
-                  クラウド活用・業務改革・システム開発・TENKU-AI の導入について、お気軽にご相談ください。
+                  クラウド活用・業務改革・システム開発について、お気軽にご相談ください。
                 </p>
                 <a href="/#contact"
                   className="inline-flex items-center gap-2 bg-aws-orange text-aws-dark font-bold py-3.5 px-10 rounded-xl hover:bg-yellow-400 transition-colors tracking-wide text-sm">
