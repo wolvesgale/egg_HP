@@ -119,7 +119,6 @@ export const portfolioItems = [
       "Stripe決済・Neon DB・Brave Search API連携による管理ダッシュボードも搭載。",
     thumbnail: "/images/case-wagashi-atelier-thumb.png",
     tags: ["Next.js", "Stripe", "Neon PostgreSQL", "Vercel", "SaaS", "和菓子"],
-    links: { demo: "https://wagashi-atelier.vercel.app/" },
     results: [
       "レシピのサブスクリプション配信",
       "体験教室のオンライン予約",
@@ -141,7 +140,7 @@ export const portfolioItems = [
       "FreeプランからProプランまでのフリーミアム構成。",
     thumbnail: null,
     tags: ["Next.js", "Gemini AI", "Clerk", "Vercel", "Stripe", "SaaS"],
-    links: { demo: "https://hojyokin-saas-wolvesgales-projects.vercel.app/" },
+    links: { demo: "https://hojo.eggs.email" },
     results: [
       "補助金申請書をAIが数分で自動生成",
       "サンプルPDFプレビュー機能搭載",
@@ -164,7 +163,7 @@ export const portfolioItems = [
       "LINEアカウントでログインするだけで、すぐに無料で診断を開始できます。",
     thumbnail: null,
     tags: ["SaaS", "Next.js", "Vercel", "セキュリティ診断", "LINE Login", "AI"],
-    links: { demo: "https://aletheia-wolvesgales-projects.vercel.app" },
+    links: { demo: "https://aletheia-sooty.vercel.app" },
     results: [
       "URL入力だけで6項目を自動診断・A〜Fグレード評価",
       "SSL/HTTPS・SPF・DKIM・DMARC・セキュリティヘッダーを総合チェック",
