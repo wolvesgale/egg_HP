@@ -105,6 +105,25 @@ export const portfolioItems = [
     ],
     screenshots: [],
   },
+
+  {
+    slug: "saiya-corporate",
+    type: "case-study",
+    featured: false,
+    title: "株式会社Saiya コーポレートサイト",
+    tagline: "イベント出店の仕組みで、ビジネスを前に進める。",
+    description:
+      "名古屋を拠点にイベント出店事業を展開する株式会社Saiyaのコーポレートサイト。" +
+      "会場確保・仕入れ体制・現場販売ノウハウ・パートナー連携といった事業の強みを整理し、東海エリアから関東・関西への実績まで伝わる構成で制作しました。",
+    thumbnail: null,
+    externalUrl: "https://saiya-91ex.vercel.app/",
+    tags: ["Next.js", "Vercel", "コーポレートサイト", "イベント出店"],
+    results: [
+      "会場確保・仕入れ・現場販売・パートナー連携の4つの強みを一覧で訴求",
+      "東海・関東・関西にわたる実績を整理して信頼性を向上",
+    ],
+    screenshots: [],
+  },
 ];
 
 export function getPortfolioItem(slug) {
