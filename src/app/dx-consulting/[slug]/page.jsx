@@ -15,20 +15,6 @@ export default function CaseStudyPage({ params }) {
   const item = getPortfolioItem(params.slug);
   if (!item) notFound();
 
-  // TENKUは専用ページにリダイレクト（このルートはcase-study用）
-  if (item.type === "product") {
-    return (
-      <main className="pt-28 pb-20 px-6 flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-gray-500 mb-4">このページは TENKU 専用ページに移動しました。</p>
-          <Link href="/dx-consulting/tenku" className="text-aws-orange hover:underline">
-            TENKU ページへ →
-          </Link>
-        </div>
-      </main>
-    );
-  }
-
   return (
     <main className="pt-28 pb-20 px-6">
       <div className="container mx-auto max-w-4xl">

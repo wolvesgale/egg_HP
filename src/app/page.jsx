@@ -95,9 +95,9 @@ function LoadingScreen({ onDone }) {
    Marquee (infinite scroll ticker)
 ───────────────────────────────────────────── */
 const TICKER_ITEMS = [
-  "EC 運営管理", "DX コンサルティング", "TENKU-AI",
+  "EC 運営管理", "DX コンサルティング",
   "Amazon", "Cloud", "和菓子イベント",
-  "EC 運営管理", "DX コンサルティング", "TENKU-AI",
+  "EC 運営管理", "DX コンサルティング",
   "Amazon", "Cloud", "和菓子イベント",
 ];
 
@@ -197,7 +197,7 @@ const businessCards = [
     icon: "fa-laptop-code",
     title: "DX コンサルティング",
     en: "Digital Transformation",
-    description: "外資大手クラウド〜スタートアップ経験のあるコンサルタントが業務改善をお手伝い。自社プロダクト TENKU-AI も提供中。",
+    description: "外資大手クラウド〜スタートアップ経験のあるコンサルタントが業務改善をお手伝い。",
     href: "/dx-consulting",
     accent: "from-sky-400/10 to-blue-300/10",
     highlight: true,
@@ -292,12 +292,6 @@ export default function HomePage() {
                     Our Business
                     <i className="fas fa-arrow-down text-sm opacity-70" />
                   </a>
-                  <Link
-                    href="/dx-consulting"
-                    className="inline-flex items-center gap-2 border border-egg-pink/50 text-egg-rose font-cormorant text-lg px-7 py-3.5 rounded-full hover:bg-egg-blush transition-colors"
-                  >
-                    TENKU-AI →
-                  </Link>
                 </div>
               </div>
 

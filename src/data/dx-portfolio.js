@@ -4,24 +4,6 @@
  */
 
 export const portfolioItems = [
-  {
-    slug: "tenku",
-    type: "product",
-    featured: true,
-    title: "TENKU AI Agent",
-    tagline: "技能実習・特定技能・特定活動を1システムで統合管理",
-    description:
-      "TENKU-AI（TENKU AI Agent）は、技能実習（TITP）／特定技能（SSW）／特定活動（TA）の在留資格管理・書類生成・更新通知を「1システムで統合管理」するクラウドネイティブ SaaS プロダクトです。" +
-      "煩雑な外国人労働者の在留管理業務を自動化し、コンプライアンスリスクの低減と業務効率化を同時に実現します。",
-    thumbnail: null,
-    tags: ["SaaS", "AWS", "技能実習 TITP", "特定技能 SSW", "特定活動 TA", "AI Agent", "在留資格管理"],
-    links: {
-      demo:     "TENKU_DEMO_URL",
-      purchase: "TENKU_PURCHASE_URL",
-      signup:   "TENKU_SIGNUP_URL",
-    },
-  },
-
   // ── 案件実績 ──────────────────────────────────────────────────────────────
 
   {

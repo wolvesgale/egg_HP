@@ -36,7 +36,6 @@ const techLogos = [
 ];
 
 export default function DxConsultingPage() {
-  const featured = portfolioItems.find((item) => item.featured);
   const cases    = getCaseStudies();
 
   return (
@@ -73,10 +72,6 @@ export default function DxConsultingPage() {
           </p>
 
           <div className="flex flex-wrap gap-3">
-            <a href="#tenku" className="inline-flex items-center gap-2 bg-aws-orange text-aws-dark font-bold px-6 py-3 rounded-lg hover:bg-yellow-400 transition-colors text-sm tracking-wide">
-              <i className="fas fa-cloud" />
-              TENKU-AI を見る
-            </a>
             <a href="#cases" className="inline-flex items-center gap-2 border border-white/20 text-gray-300 px-6 py-3 rounded-lg hover:border-white/40 hover:text-white transition-colors text-sm">
               <i className="fas fa-folder-open" />
               導入実績
@@ -98,115 +93,6 @@ export default function DxConsultingPage() {
           </div>
         </div>
       </section>
-
-      {/* ── TENKU AI Agent ── */}
-      {featured && (
-        <section id="tenku" className="py-24 px-6">
-          <div className="container mx-auto max-w-5xl">
-            <Reveal>
-              <div className="flex items-center gap-3 mb-10">
-                <div className="h-px flex-1 bg-aws-orange/20" />
-                <span className="text-aws-orange text-xs font-mono tracking-[0.3em] uppercase">Featured Product</span>
-                <div className="h-px flex-1 bg-aws-orange/20" />
-              </div>
-            </Reveal>
-
-            <Reveal delay="animation-delay-100">
-              <div className="relative rounded-2xl overflow-hidden border border-aws-orange/25 bg-gradient-to-br from-aws-card to-aws-darker hover:border-aws-orange/50 transition-all duration-400 group">
-                {/* Glow effect */}
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(255,153,0,0.06),transparent_60%)] group-hover:opacity-150 transition-opacity" />
-
-                <div className="relative p-8 md:p-12">
-                  <div className="flex flex-col lg:flex-row gap-10 items-start">
-
-                    {/* Content */}
-                    <div className="flex-1">
-                      <div className="flex flex-wrap items-center gap-3 mb-5">
-                        <span className="inline-flex items-center gap-1.5 bg-aws-orange text-aws-dark text-xs font-bold px-3 py-1.5 rounded-full tracking-widest">
-                          <i className="fas fa-robot text-xs" />
-                          TENKU-AI
-                        </span>
-                        <span className="text-gray-500 text-xs font-mono border border-white/10 px-2 py-1 rounded">
-                          SaaS PRODUCT BY EGG
-                        </span>
-                      </div>
-
-                      <h2 className="text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight">
-                        TENKU AI Agent
-                      </h2>
-                      <p className="text-aws-orange text-lg font-medium mb-5">{featured.tagline}</p>
-
-                      <p className="text-gray-300 leading-relaxed mb-8 max-w-xl">{featured.description}</p>
-
-                      {/* Key points */}
-                      <div className="grid sm:grid-cols-3 gap-3 mb-8">
-                        {[
-                          { icon: "fa-id-card",       label: "技能実習 TITP" },
-                          { icon: "fa-user-check",    label: "特定技能 SSW" },
-                          { icon: "fa-file-signature", label: "特定活動 TA" },
-                        ].map(({ icon, label }) => (
-                          <div key={label} className="flex items-center gap-2 bg-aws-dark/60 rounded-lg px-3 py-2.5 border border-white/5">
-                            <i className={`fas ${icon} text-aws-orange text-sm`} />
-                            <span className="text-gray-300 text-sm font-medium">{label}</span>
-                          </div>
-                        ))}
-                      </div>
-
-                      <div className="flex flex-wrap gap-2 mb-8">
-                        {featured.tags.map((tag) => (
-                          <span key={tag} className="bg-aws-darker text-gray-500 text-xs px-2.5 py-1 rounded-full border border-white/8">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-
-                      <div className="flex flex-wrap gap-3">
-                        <a href={featured.links.demo} target="_blank" rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 bg-aws-orange text-aws-dark font-bold px-5 py-2.5 rounded-lg hover:bg-yellow-400 transition-colors text-sm">
-                          <i className="fas fa-play-circle" /> デモを見る
-                        </a>
-                        <a href={featured.links.signup} target="_blank" rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 border border-aws-orange text-aws-orange font-bold px-5 py-2.5 rounded-lg hover:bg-aws-orange hover:text-aws-dark transition-colors text-sm">
-                          <i className="fas fa-file-signature" /> お申込み
-                        </a>
-                        <Link href="/dx-consulting/tenku"
-                          className="inline-flex items-center gap-2 border border-white/15 text-gray-400 px-5 py-2.5 rounded-lg hover:border-white/30 hover:text-white transition-colors text-sm">
-                          詳細を見る →
-                        </Link>
-                      </div>
-                    </div>
-
-                    {/* Visual */}
-                    <div className="lg:w-72 w-full">
-                      <div className="relative rounded-xl bg-aws-darker border border-white/8 overflow-hidden aspect-square flex items-center justify-center">
-                        {featured.thumbnail ? (
-                          <img src={featured.thumbnail} alt={featured.title} className="w-full h-full object-cover" />
-                        ) : (
-                          <div className="text-center p-8">
-                            <div className="w-20 h-20 mx-auto mb-5 rounded-2xl bg-aws-orange/10 border border-aws-orange/20 flex items-center justify-center">
-                              <i className="fas fa-robot text-aws-orange text-3xl" />
-                            </div>
-                            <p className="text-gray-600 font-mono text-xs tracking-widest mb-1">TENKU-AI</p>
-                            <p className="text-gray-700 font-mono text-[10px]">AI Agent Platform</p>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Footer bar */}
-                <div className="relative border-t border-white/5 px-8 md:px-12 py-4 flex items-center justify-between bg-aws-darker/50">
-                  <span className="text-gray-600 text-sm font-mono">外国人労働者の在留資格管理を、丸ごとDX</span>
-                  <Link href="/dx-consulting/tenku" className="text-aws-orange text-sm hover:underline font-mono">
-                    製品詳細 →
-                  </Link>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </section>
-      )}
 
       {/* ── Case Studies ── */}
       <section id="cases" className="py-16 px-6 border-t border-white/5">
@@ -296,7 +182,7 @@ export default function DxConsultingPage() {
                 </div>
                 <h3 className="text-3xl font-bold text-white mb-4">DX推進のご相談</h3>
                 <p className="text-gray-400 mb-8 max-w-xl mx-auto leading-relaxed">
-                  クラウド活用・業務改革・システム開発・TENKU-AI の導入について、お気軽にご相談ください。
+                  クラウド活用・業務改革・システム開発について、お気軽にご相談ください。
                 </p>
                 <a href="/#contact"
                   className="inline-flex items-center gap-2 bg-aws-orange text-aws-dark font-bold py-3.5 px-10 rounded-xl hover:bg-yellow-400 transition-colors tracking-wide text-sm">

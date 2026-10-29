@@ -44,15 +44,6 @@ export default function DxHeader() {
             </li>
             <li>
               <Link
-                href="/dx-consulting/tenku"
-                className="text-gray-300 hover:text-aws-orange text-sm transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                TENKU
-              </Link>
-            </li>
-            <li>
-              <Link
                 href="/"
                 className="text-gray-500 hover:text-gray-300 text-sm transition-colors"
                 onClick={() => setIsMenuOpen(false)}

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata = {
   title: "DX Consulting & Products | 株式会社egg",
-  description: "DXコンサルティング・クラウド導入支援・自社プロダクト TENKU | 株式会社egg",
+  description: "DXコンサルティング・クラウド導入支援 | 株式会社egg",
 };
 
 export default function DxLayout({ children }) {
