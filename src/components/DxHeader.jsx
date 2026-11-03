@@ -14,7 +14,7 @@ export default function DxHeader() {
           </div>
           <div className="leading-none">
             <span className="text-white font-semibold tracking-wide">egg</span>
-            <span className="text-aws-orange ml-2 text-xs font-medium tracking-widest">DX & PRODUCTS</span>
+            <span className="text-aws-orange ml-2 text-xs font-medium tracking-widest">DX PORTFOLIO</span>
           </div>
         </Link>
 
@@ -40,6 +40,15 @@ export default function DxHeader() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Portfolio
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/#contact"
+                className="text-gray-300 hover:text-aws-orange text-sm transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Contact
               </Link>
             </li>
             <li>

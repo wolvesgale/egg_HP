@@ -95,10 +95,10 @@ function LoadingScreen({ onDone }) {
    Marquee (infinite scroll ticker)
 ───────────────────────────────────────────── */
 const TICKER_ITEMS = [
-  "EC 運営管理", "DX コンサルティング",
-  "Amazon", "Cloud", "和菓子イベント",
-  "EC 運営管理", "DX コンサルティング",
-  "Amazon", "Cloud", "和菓子イベント",
+  "EC 運営管理", "DX コンサルティング", "AI 活用", "Amazon",
+  "Cloud", "和菓子イベント", "AI Agent", "業務改革",
+  "EC 運営管理", "DX コンサルティング", "AI 活用", "Amazon",
+  "Cloud", "和菓子イベント", "AI Agent", "業務改革",
 ];
 
 function Marquee({ reverse = false }) {
@@ -197,7 +197,7 @@ const businessCards = [
     icon: "fa-laptop-code",
     title: "DX コンサルティング",
     en: "Digital Transformation",
-    description: "外資大手クラウド〜スタートアップ経験のあるコンサルタントが業務改善をお手伝い。",
+    description: "外資大手クラウド〜スタートアップ経験のあるコンサルタントが業務改善をお手伝い。AI・クラウド活用のシステム開発実績も多数。",
     href: "/dx-consulting",
     accent: "from-sky-400/10 to-blue-300/10",
     highlight: true,
@@ -292,6 +292,12 @@ export default function HomePage() {
                     Our Business
                     <i className="fas fa-arrow-down text-sm opacity-70" />
                   </a>
+                  <Link
+                    href="/dx-consulting"
+                    className="inline-flex items-center gap-2 border border-egg-pink/50 text-egg-rose font-cormorant text-lg px-7 py-3.5 rounded-full hover:bg-egg-blush transition-colors"
+                  >
+                    DX・実績を見る →
+                  </Link>
                 </div>
               </div>
 
@@ -379,7 +385,7 @@ export default function HomePage() {
               <div className="mt-5 mx-auto w-16 h-px bg-gradient-to-r from-transparent via-egg-pink to-transparent" />
             </Reveal>
 
-            <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
+            <div className="grid md:grid-cols-3 gap-5">
               {businessCards.map(({ num, icon, title, en, description, href, accent, highlight }, i) => (
                 <Reveal key={href} delay={`animation-delay-${(i + 1) * 100}`}>
                   <Link href={href} className="group block h-full">
@@ -503,8 +509,9 @@ export default function HomePage() {
                 {[
                   { label: "会社名",    value: "株式会社egg" },
                   { label: "代表取締役", value: "前田 拡夢" },
-                  { label: "所在地",    value: "〒661-0977 兵庫県尼崎市竹谷町3丁目89-4" },
+                  { label: "所在地",    value: "〒660-0876 兵庫県尼崎市竹谷町3丁目89-4" },
                   { label: "設立",      value: "2025年" },
+                  { label: "法人番号",  value: "7140001138678" },
                   { label: "Email",     value: "info@eggs.email", isEmail: true },
                 ].map(({ label, value, isEmail }, i) => (
                   <div
